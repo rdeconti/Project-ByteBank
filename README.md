@@ -14,3 +14,6 @@ Neste projeto ByteBank temos o controle das contas bancárias por diversos níve
 - CD\Program Files\MySQL\MySQL Server 8.0\bin
 - mysql -u root -p
 
+# Desenho do banco de dados
+- https://app.diagrams.net/
+
