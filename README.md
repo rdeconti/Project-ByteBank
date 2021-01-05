@@ -18,3 +18,6 @@ Neste projeto ByteBank temos o controle das contas bancárias por diversos níve
 # Desenho do banco de dados
 - https://app.diagrams.net/
 
+# Estudos
+- https://www.codejava.net/coding/jsp-servlet-jdbc-mysql-create-read-update-delete-crud-example
+
