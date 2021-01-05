@@ -12,6 +12,7 @@ Neste projeto ByteBank temos o controle das contas bancárias por diversos níve
 - https://docs.openkm.com/kcenter/view/okm-6.4/configuring-tomcat-port.html
 - https://jar-download.com/
 - https://www.devmedia.com.br/criando-uma-conexao-java-mysql-server/16753
+- https://pplware.sapo.pt/tutoriais/mysql-workbench-aprenda-a-criar-bases-de-dados-e-tabelas/
 
 # Carregar MySql via CMD windows
 - CD\Program Files\MySQL\MySQL Server 8.0\bin
