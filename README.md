@@ -10,6 +10,7 @@ Neste projeto ByteBank temos o controle das contas bancárias por diversos níve
 # Configurações
 - https://www.devmedia.com.br/instalacao-e-configuracao-do-apache-tomcat-no-eclipse/27360
 - https://docs.openkm.com/kcenter/view/okm-6.4/configuring-tomcat-port.html
+- https://jar-download.com/
 
 # Carregar MySql via CMD windows
 - CD\Program Files\MySQL\MySQL Server 8.0\bin
