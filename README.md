@@ -22,6 +22,7 @@ Neste projeto ByteBank temos o controle das contas bancárias por diversos níve
 # Carregar MySql via CMD windows
 - CD\Program Files\MySQL\MySQL Server 8.0\bin
 - mysql -u root -p
+- serverTimezone=UTC (database connection / driver proprieties / optional
 
 # Desenho do banco de dados
 - https://app.diagrams.net/
