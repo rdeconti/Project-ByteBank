@@ -1,0 +1,272 @@
+/*
+Project: Seniores Digitais - Labora/Alura/Oracle ONE
+Programmer: Rosemeire Deconti
+Date: January / 2021
+Challenge: Create web page Bytebank with HTML5, CSS3, JSP, JAVA and MYSQL
+*/
+
+ /************************************************************************ CREATE DATABASE BYTEBANK */
+DROP DATABASE IF EXISTS `Bytebank`;
+CREATE DATABASE IF NOT EXISTS Bytebank;
+USE Bytebank;
+
+/************************************************************************ CREATE TABLE ADDRESS */
+DROP TABLE IF EXISTS `Address`;
+CREATE TABLE `Address` (
+    `AddressCode` INT NOT NULL AUTO_INCREMENT,
+    `AddressStatus` CHAR NOT NULL,
+    `AddressCountry` INT NOT NULL,
+    `AddressState` INT NOT NULL,
+    `AddressCity` INT NOT NULL,
+    `AddressNumber` INT NOT NULL,
+    `AddressCep` INT NOT NULL,
+    `AddressDetail` VARCHAR(200) NOT NULL,
+    PRIMARY KEY (`AddressCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Address`(`AddressCode`,`AddressStatus`,`AddressCountry`,`AddressState`,`AddressCity`,`AddressNumber`, `AddressCep`, `AddressDetail`) values
+('1','A','001','001','001','001','03170050','XYZ') ;
+
+/************************************************************************ CREATE TABLE CONTACT */
+DROP TABLE IF EXISTS `Contact`;
+CREATE TABLE `Contact` (
+    `ContactCode` INT NOT NULL AUTO_INCREMENT,
+    `ContactStatus` CHAR NOT NULL,
+    `ContactEmail` VARCHAR(30) NOT NULL,
+    `ContactPhone` INT NOT NULL,
+    PRIMARY KEY (`ContactCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Contact`(`ContactCode`,`ContactStatus`,`ContactEmail`,`ContactPhone`) values
+('1','A','XYZ','99999999') ;
+
+/************************************************************************ CREATE TABLE ROLE */
+DROP TABLE IF EXISTS `Role`;
+CREATE TABLE `Role` (
+    `RoleCode` INT NOT NULL AUTO_INCREMENT,
+    `RoleStatus` CHAR NOT NULL,
+    `RoleName` VARCHAR(100) NOT NULL,
+    `RoleDescription` VARCHAR(300) NOT NULL,
+    `RoleSalary` DECIMAL(10, 2),
+    `RoleBonus` DECIMAL(10, 2),
+    `RoleCurrency` INT,
+    PRIMARY KEY (`RoleCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Role`(`RoleCode`,`RoleStatus`,`RoleName`,`RoleDescription`,`RoleSalary`,`RoleBonus`, `RoleCurrency`) values
+('1','A','XYZ','XYZ','10.5','10.7','1');
+
+/************************************************************************ CREATE TABLE USER */
+DROP TABLE IF EXISTS `User`;
+CREATE TABLE `User` (
+    `UserCode` INT NOT NULL AUTO_INCREMENT,
+    `UserStatus` CHAR NOT NULL,
+    `UserLevel` CHAR NOT NULL,
+    `UserFailed` INT NOT NULL,
+    `UserPassword` VARCHAR(10) NOT NULL,
+    PRIMARY KEY (`UserCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `User`(`UserCode`,`UserStatus`,`UserLevel`,`UserFaileD`,`UserPassword`) values
+('1','A','1','0','XYZ');
+
+/************************************************************************ CREATE TABLE EMPLOYEE */
+DROP TABLE IF EXISTS `Employee`;
+CREATE TABLE `Employee` (
+    `EmployeeCode` INT NOT NULL AUTO_INCREMENT,
+    `EmployeeStatus` CHAR NOT NULL,
+    `EmployeeName` VARCHAR(100) NOT NULL,
+    `EmployeeType` CHAR NOT NULL,
+    `EmployeeDocs` INT NOT NULL,
+	`EmployeeAddress` INT NOT NULL,
+    `EmployeeContact` INT NOT NULL,
+    `EmployeeUser` INT NOT NULL,
+    PRIMARY KEY (`EmployeeCode`),
+	CONSTRAINT `EmployeeIbfk1` FOREIGN KEY (`EmployeeAddress`)
+        REFERENCES `Address` (`AddressCode`),
+    CONSTRAINT `EmployeeIbfk2` FOREIGN KEY (`EmployeeContact`)
+        REFERENCES `Contact` (`ContactCode`),
+    CONSTRAINT `EmployeeIbfk3` FOREIGN KEY (`EmployeeUser`)
+        REFERENCES `User` (`UserCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Employee`(`EmployeeCode`,`EmployeeStatus`,`EmployeeName`,`EmployeeType`,`EmployeeDocs`,`EmployeeAddress`,`EmployeeContact`,`EmployeeUser` ) values
+('1','A','XYZ','M','99','1','1','1');
+
+/************************************************************************ CREATE TABLE USER */
+DROP TABLE IF EXISTS `Package`;
+CREATE TABLE `Package` (
+    `PackageCode` INT NOT NULL AUTO_INCREMENT,
+    `PackageStatus` CHAR NOT NULL,
+    `PackageLevel` CHAR NOT NULL,
+    `PackageName` VARCHAR(100) NOT NULL,
+    `PackageDescription` VARCHAR(300) NOT NULL,
+    `PackageLimit` DECIMAL(10 , 2 ),
+    `PackageFee` DECIMAL(10 , 2 ),
+    PRIMARY KEY (`PackageCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Package`(`PackageCode`,`PackageStatus`,`PackageLevel`,`PackageName`,`PackageDescription`,`PackageLimit`,`PackageFee`) values
+('1','A','1','XYZ','XYZ','100.99','100.99');
+
+/************************************************************************ CREATE TABLE BANK */
+DROP TABLE IF EXISTS `Bank`;
+CREATE TABLE `Bank` (
+    `BankCode` INT NOT NULL AUTO_INCREMENT,
+    `BankStatus` CHAR NOT NULL,
+    `BankName` VARCHAR(100) NOT NULL,
+    `BankAddress` INT NOT NULL,
+    `BankContact` INT NOT NULL,
+    `BankEmployee` INT NOT NULL,
+    PRIMARY KEY (`BankCode`),
+    CONSTRAINT `BankIbfk1` FOREIGN KEY (`BankAddress`)
+        REFERENCES `Address` (`AddressCode`),
+    CONSTRAINT `BankIbfk2` FOREIGN KEY (`BankContact`)
+        REFERENCES `Contact` (`ContactCode`),
+    CONSTRAINT `BankIbfk3` FOREIGN KEY (`BankEmployee`)
+        REFERENCES `Employee` (`EmployeeCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert into `Bank`(`BankCode`,`BankStatus`,`BankName`,`BankAddress`,`BankContact`,`BankEmployee`) values
+('1','A','XYZ','1','1','1');
+
+/************************************************************************ CREATE TABLE BRANCH */
+DROP TABLE IF EXISTS `Branch`;
+CREATE TABLE `Branch` (
+    `BranchCode` INT NOT NULL AUTO_INCREMENT,
+    `BranchStatus` CHAR NOT NULL,
+    `BranchName` VARCHAR(100) NOT NULL,
+    `BranchAddress` INT NOT NULL,
+    `BranchContact` INT NOT NULL,
+    `BranchEmployee` INT NOT NULL,
+    `BranchBank` INT NOT NULL,
+    PRIMARY KEY (`BranchCode`),
+    CONSTRAINT `BranchIbfk1` FOREIGN KEY (`BranchAddress`)
+        REFERENCES `Address` (`AddressCode`),
+    CONSTRAINT `BranchIbfk2` FOREIGN KEY (`BranchContact`)
+        REFERENCES `Contact` (`ContactCode`),
+    CONSTRAINT `BranchIbfk3` FOREIGN KEY (`BranchEmployee`)
+        REFERENCES `Employee` (`EmployeeCode`),
+	CONSTRAINT `BranchIbfk4` FOREIGN KEY (`BranchBank`)
+        REFERENCES `Bank` (`BankCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert into `Branch`(`BranchCode`,`BranchStatus`,`BranchName`,`BranchAddress`,`BranchContact`,`BranchEmployee`,`BranchBank`) values
+('1','A','XYZ','1','1','1','1');
+
+/************************************************************************ CREATE TABLE ACCOUNT */
+DROP TABLE IF EXISTS `Account`;
+CREATE TABLE `Account` (
+    `AccountCode` INT NOT NULL AUTO_INCREMENT,
+    `AccountStatus` CHAR NOT NULL,
+    `AccountType` CHAR NOT NULL,
+    `AccountAmount` DECIMAL(10 , 2 ),
+    `AccountCurrency` INT NOT NULL,
+    `AccountOpenDate` DATE NOT NULL,
+    `AccountCloseDate` DATE,
+    `AccountBank` INT NOT NULL,
+    `AccountBranch` INT NOT NULL,
+    `AccountPackage` INT NOT NULL,
+    `AccountEmployee` INT NOT NULL,
+    PRIMARY KEY (`AccountCode`),
+	CONSTRAINT `AccountIbfk1` FOREIGN KEY (`AccountBank`)
+		REFERENCES `Bank` (`BankCode`),
+	CONSTRAINT `AccountIbfk2` FOREIGN KEY (`AccountBranch`)
+		REFERENCES `Branch` (`BranchCode`),
+    CONSTRAINT `AccountIbfk3` FOREIGN KEY (`AccountPackage`)
+        REFERENCES `Package` (`PackageCode`),
+    CONSTRAINT `AccountIbfk4` FOREIGN KEY (`AccountEmployee`)
+        REFERENCES `Employee` (`EmployeeCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Account`(`AccountCode`,`AccountStatus`,`AccountType`,`AccountAmount`,`AccountCurrency`,`AccountOpenDate`,`AccountCloseDate`,`AccountBank`,`AccountBranch`,`AccountPackage`,`AccountEmployee`) values
+('1','A','C','1000.99','001','2021-01-01 12:30:33','2021-01-01 12:30:33','1','1','1','1');
+
+/************************************************************************ CREATE TABLE CUSTOMER */
+DROP TABLE IF EXISTS `Customer`;
+CREATE TABLE `Customer` (
+    `CustomerCode` INT NOT NULL AUTO_INCREMENT,
+    `CustomerStatus` CHAR NOT NULL,
+    `CustomerName` VARCHAR(100) NOT NULL,
+    `CustomerType` CHAR NOT NULL,
+    `CustomerDocs` INT,
+    `CustomerAddress` INT NOT NULL,
+    `CustomerContact` INT NOT NULL,
+    `CustomerUser` INT NOT NULL,
+    PRIMARY KEY (`CustomerCode`),
+    CONSTRAINT `CustomerIbfk1` FOREIGN KEY (`CustomerAddress`)
+        REFERENCES `Address` (`AddressCode`),
+    CONSTRAINT `CustomerIbfk2` FOREIGN KEY (`CustomerContact`)
+        REFERENCES `Contact` (`ContactCode`),
+    CONSTRAINT `CustomerIbfk3` FOREIGN KEY (`CustomerUser`)
+        REFERENCES `User` (`UserCode`)        
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Customer`(`CustomerCode`,`CustomerStatus`,`CustomerName`,`CustomerType`,`CustomerDocs`,`CustomerAddress`,`CustomerContact`,`CustomerUser`) values
+('1','A','XYZ','F','99','1','1','1');
+
+/************************************************************************ CREATE TABLE STATAMENT */
+DROP TABLE IF EXISTS `Statament`;
+CREATE TABLE `Statament` (
+    `StatamentCode` INT NOT NULL AUTO_INCREMENT,
+    `StatamentStatus` CHAR NOT NULL,
+    `StatamentType` CHAR NOT NULL,
+    `StatamentBank` INT NOT NULL,
+    `StatamentBranch` INT NOT NULL,
+    `StatamentAccount` INT NOT NULL,
+    `StatamentCustomer` INT NOT NULL,
+    `StatamentAmount` DECIMAL(10,2),
+    `StatamentCurrency` INT NOT NULL,
+    `StatamentDate` DATE NOT NULL,
+    PRIMARY KEY (`StatamentCode`),
+	CONSTRAINT `StatamentIbfk1` FOREIGN KEY (`StatamentBank`)
+		REFERENCES `Bank` (`BankCode`),
+	CONSTRAINT `StatamentIbfk2` FOREIGN KEY (`StatamentBranch`)
+		REFERENCES `Branch` (`BranchCode`),
+    CONSTRAINT `StatamentIbfk3` FOREIGN KEY (`StatamentAccount`)
+        REFERENCES `Account` (`AccountCode`),
+    CONSTRAINT `StatamentIbfk4` FOREIGN KEY (`StatamentCustomer`)
+        REFERENCES `Customer` (`CustomerCode`)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Statament`(`StatamentCode`,`StatamentStatus`,`StatamentType`,`StatamentBank`,`StatamentBranch`,`StatamentAccount`,`StatamentCustomer`,`StatamentAmount`,`StatamentCurrency`,`StatamentDate`) values
+('1','A','C','1','1','1','1','100.10','1','2021-01-01 12:30:33');
+
+/************************************************************************ CREATE TABLE TRANSFER */
+DROP TABLE IF EXISTS `Transfer`;
+CREATE TABLE `Transfer` (
+    `TransferCode` INT NOT NULL AUTO_INCREMENT,
+    `TransferStatus` CHAR NOT NULL,
+    `TransferFromBank` INT NOT NULL,
+    `TransferFromBranch` INT NOT NULL,
+    `TransferFromAccount` INT NOT NULL,
+    `TransferFromCustomer` INT NOT NULL,
+    `TransferToBank` INT NOT NULL,
+    `TransferToBranch` INT NOT NULL,
+    `TransferToAccount` INT NOT NULL,
+    `TransferToCustomer` INT NOT NULL,
+    `TransferAmount` DECIMAL(10,2),
+    `TransferCurrency` INT NOT NULL,
+    `TransferDate` DATE NOT NULL,
+    PRIMARY KEY (`TransferCode`),
+	CONSTRAINT `TransferIbfk1` FOREIGN KEY (`TransferFromBank`)
+		REFERENCES `Bank` (`BankCode`),
+	CONSTRAINT `TransferIbfk2` FOREIGN KEY (`TransferFromBranch`)
+		REFERENCES `Branch` (`BranchCode`),
+    CONSTRAINT `TransferIbfk3` FOREIGN KEY (`TransferFromAccount`)
+        REFERENCES `Account` (`AccountCode`),
+    CONSTRAINT `TransferIbfk4` FOREIGN KEY (`TransferFromCustomer`)
+        REFERENCES `Customer` (`CustomerCode`),
+	CONSTRAINT `TransferIbfk5` FOREIGN KEY (`TransferToBank`)
+		REFERENCES `Bank` (`BankCode`),
+	CONSTRAINT `TransferIbfk6` FOREIGN KEY (`TransferToBranch`)
+		REFERENCES `Branch` (`BranchCode`),
+    CONSTRAINT `TransferIbfk7` FOREIGN KEY (`TransferToAccount`)
+        REFERENCES `Account` (`AccountCode`),
+    CONSTRAINT `TransferIbfk8` FOREIGN KEY (`TransferToCustomer`)
+        REFERENCES `Customer` (`CustomerCode`)
+        
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=LATIN1;
+
+insert  into `Transfer`(`TransferCode`,`TransferStatus`,`TransferFromBank`,`TransferFromBranch`,`TransferFromAccount`,`TransferFromCustomer`,`TransferToBank`,`TransferToBranch`,`TransferToAccount`,`TransferToCustomer`,`TransferAmount`,`TransferCurrency`,`TransferDate`) values
+('1','A','1','1','1','1','1','1','1','1','100.30','1','2021-01-01 12:30:33');

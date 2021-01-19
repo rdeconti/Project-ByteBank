@@ -1,0 +1,3 @@
+Revisar MYSQL (String, int, char, date)
+Trocar usuário e senha do bytebank: rdeconti/$Samsung01 para user/password
+Criar para para os javascripts
