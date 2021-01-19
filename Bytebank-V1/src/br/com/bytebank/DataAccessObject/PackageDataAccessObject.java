@@ -28,11 +28,13 @@ public class PackageDataAccessObject {
 
 	private static final String SQL_TABLE = "Package";
 	
-	private static final String SQL_INSERT = "insert into " + SQL_TABLE + "  (name, email, country) VALUES " + " (?, ?, ?);";
-	private static final String SQL_READ_ID = "select * from " + SQL_TABLE + " where id =?";
+	private static final String SQL_INSERT = "insert into " + SQL_TABLE + 
+	"  (packageCode, packageStatus, packageLevel, packageName, packageDescription, packageLimit, packageFee) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
+	private static final String SQL_READ_ID = "select * from " + SQL_TABLE + " where packageCode =?";
 	private static final String SQL_READ_ALL = "select * from " + SQL_TABLE;
-	private static final String SQL_DELETE = "delete from " + SQL_TABLE + " where id = ?;";
-	private static final String SQL_UPDATE = "update " + SQL_TABLE + " set name = ?,email= ?, country =? where id = ?;";
+	private static final String SQL_DELETE = "delete from " + SQL_TABLE + " where packageCode = ?;";
+	private static final String SQL_UPDATE = "update " + SQL_TABLE + 
+	" set packageStatus=?, packageLevel=?, packageName=?, packageDescription=?, packageLimit=?, packageFee=? where packageCode = ?;";
 	
 	/*************************************************************************************
 	Default constructor

@@ -72,32 +72,31 @@ public class PackageServlet extends HttpServlet {
 		
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		String packageAction = request.getServletPath();
-		
-		System.out.print("CONSOLE -- RESPONSE = " + packageAction + "\n");
+				
+		String submitAction= request.getParameter("submitAction");
+		System.out.print("CONSOLE -- BUTTON = " + submitAction + "\n");
 
 		try {
 			
-			switch (packageAction) {
+			switch (submitAction) {
 			
 				case "/new":
 					showInsertForm(request, response);
 					break;
 			
-				case "/insert":
+				case "Create":
 					insertPackage(request, response);
 					break;
 					
-				case "/edit":
+				case "/update":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/update":
+				case "Update":
 					updatePackage(request, response);
 					break;
 					
-				case "/delete":
+				case "Delete":
 					deletePackage(request, response);
 					break;
 
@@ -167,8 +166,29 @@ public class PackageServlet extends HttpServlet {
 		
 		PackageDataAccessObject.insertPackage(newPackage);
 		
-		response.sendRedirect("list");
+		// response.sendRedirect("list");
+		System.out.print("CONSOLE -- GERAR LISTA DEPOIS DO INSERT \n ");    
 		
+		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		
+		request.setAttribute("myPackage", listPackage);
+		
+		response.sendRedirect("package.jsp");
+		
+		
+		
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("package.jsp");
+//		
+//		try {
+//			requestDispatcher.forward(request, response);
+//		} catch (ServletException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
 	}
 	
 	/*********************************************************************************
@@ -223,7 +243,7 @@ public class PackageServlet extends HttpServlet {
 		
 		request.setAttribute("myPackage", listPackage);
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("packageList.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("package.jsp");
 		
 		requestDispatcher.forward(request, response);
 		

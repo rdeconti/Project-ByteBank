@@ -50,7 +50,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
   		<p class="current-date" id="current-date"></p>
   		
 		<!----------------------------------------------------- INCLUDE HEADER -->
-    	<%@include file="../javaServerPages/header.jsp" %>
+		<header>
+			
+			<a href="home.html">
+			  <img class="header-logo" src="WEB-INF-images/bytebank-logo.png" title="Home Page" alt="ByteBank Logo">
+			</a>	
+				      
+		</header>
 
 		<!-------------------------------------------------------- START PARTS -->
 		<div class="part-total">
@@ -95,6 +101,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<th>Status</th>
 							<th>Level</th>
 							<th>Name</th>
+							<th>Description</th>
 							<th>Limit</th>
 							<th>Tax</th>
 							
@@ -117,8 +124,6 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								<td>${myPackage.packageDescription}</td>
 								<td>${myPackage.packageLimit}</td>
 								<td>${myPackage.packageFee}</td>
-								<!-- <td><a href="Servlet?action=editar&id" >Change</a></td> -->
-								<!-- <td><a href="Servlet?action=deletar&id" >Delete</a></td> -->
 								
 							</tr>	
 												
@@ -139,43 +144,43 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 					<fieldset>
 					
 						<label>Code</label>					
-						<input type="text" name="code" required value="${PackageModel.PackageCode}" placeholder="Ativo" />
+						<input type="text" name="code" required value="${myPackage.packageCode}" placeholder="Ativo" />
 						<br/>
 						<br/>
 					
 						<label>Status</label>					
-						<input type="text" name="status" required value="${PackageModel.PackageStatus}" placeholder="Ativo" />
+						<input type="text" name="status" required value="${myPackage.packageStatus}" placeholder="Ativo" />
 						<br/>
 						<br/>
 						
 						<label>Level</label>					
-						<input type="text" name="level" required value="${PackageModel.PackageLevel}" placeholder="Prime" />
+						<input type="text" name="level" required value="${myPackage.packageLevel}" placeholder="Prime" />
 						<br/>
 						<br/>
 						
 						<label>Name</label>					
-						<input type="text" name="name" required value="${PackageModel.PackageName}" placeholder="Prime" />
+						<input type="text" name="name" required value="${myPackage.packageName}" placeholder="Prime" />
 						<br/>
 						<br/>
 						
 						<label>Description</label>					
-						<input type="text" name="description" required value="${PackageModel.PackageDescription}" placeholder="Prime" />
+						<input type="text" name="description" required value="${myPackage.packageDescription}" placeholder="Prime" />
 						<br/>
 						<br/>
 						
 						<label>Limit</label>					
-						<input type="text" name="limit" required value="${PackageModel.PackageLimit}" placeholder="5.000,00" />
+						<input type="text" name="limit" required value="${myPackage.packageLimit}" placeholder="5.000,00" />
 						<br/>
 						<br/>
 						
 						<label>Tax</label>					
-						<input type="text" name="fee" required value="${PackageModel.PackageFee}" placeholder="2%" />
+						<input type="text" name="fee" required value="${myPackage.packageFee}" placeholder="2%" />
 						<br/>
 						<br/>
 						
-						<input type="submit" value="Update"> 				
-						<input type="submit" value="Delete"> 
-						<input type="submit" value="Create"> 
+						<input type="submit" value="Update" name="submitAction"> 				
+						<input type="submit" value="Delete" name="submitAction""> 
+						<input type="submit" value="Create" name="submitAction""> 
 						<br/>
 						<br/>
 						
@@ -189,7 +194,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 
 
 		<!------------------------------------------------------ INCLUDE FOOTER -->
-    	<%@include file="../javaServerPages/footer.jsp" %>
+		<footer>
+			
+			<a href="home.html">
+			  <img class="footer-logo" src="WEB-INF-images/bytebank-logo.png" title="Home Page" alt="ByteBank Logo">
+			</a>	
+				      
+		</footer>
 				
 		<!---------------------------------------------------- START JAVASCRIPT -->
 		<script>
