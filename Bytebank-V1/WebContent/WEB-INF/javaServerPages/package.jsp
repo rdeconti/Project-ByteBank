@@ -24,11 +24,15 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	  
 	  <!-- Reset style sheets ---------------------------------------------------->
 	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/reset.css">
+	  
+  	  <!-- Icons style sheets ---------------------------------------------------->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	   <!-- Style sheets --------------------------------------------------------->
    	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/current-date.css">
    	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/footer.css">
   	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/header.css">
+   	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/icons.css">
 	  <link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/package.css">
 	  
 	  <!-- Windows FAVICON  ----------------------------------------------------->
@@ -124,6 +128,8 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								<td>${myPackage.packageDescription}</td>
 								<td>${myPackage.packageLimit}</td>
 								<td>${myPackage.packageFee}</td>
+
+								<td><a href="PackageServlet?&id=<c:out value='${myPackage.packageCode}'/>"><i class="fa fa-edit"></i></a></td>
 								
 							</tr>	
 												
@@ -179,8 +185,8 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 						<br/>
 						
 						<input type="submit" value="Update" name="submitAction"> 				
-						<input type="submit" value="Delete" name="submitAction""> 
-						<input type="submit" value="Create" name="submitAction""> 
+						<input type="submit" value="Delete" name="submitAction"> 
+						<input type="submit" value="Create" name="submitAction"> 
 						<br/>
 						<br/>
 						
@@ -199,6 +205,28 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 			<a href="home.html">
 			  <img class="footer-logo" src="WEB-INF-images/bytebank-logo.png" title="Home Page" alt="ByteBank Logo">
 			</a>	
+			
+			<!-- Add font awesome icons -->
+			<a href="#" class="fa fa-facebook"></a>
+			<a href="#" class="fa fa-twitter"></a>
+			<a href="#" class="fa fa-google"></a>
+			<a href="#" class="fa fa-linkedin"></a>
+			<a href="#" class="fa fa-youtube"></a>
+			<a href="#" class="fa fa-instagram"></a>
+			<a href="#" class="fa fa-pinterest"></a>
+			<a href="#" class="fa fa-snapchat-ghost"></a>
+			<a href="#" class="fa fa-skype"></a>
+			<a href="#" class="fa fa-android"></a>
+			<a href="#" class="fa fa-dribbble"></a>
+			<a href="#" class="fa fa-vimeo"></a>
+			<a href="#" class="fa fa-tumblr"></a>
+			<a href="#" class="fa fa-vine"></a>
+			<a href="#" class="fa fa-foursquare"></a>
+			<a href="#" class="fa fa-stumbleupon"></a>
+			<a href="#" class="fa fa-flickr"></a>
+			<a href="#" class="fa fa-yahoo"></a>
+			<a href="#" class="fa fa-reddit"></a>
+			<a href="#" class="fa fa-rss"></a>
 				      
 		</footer>
 				

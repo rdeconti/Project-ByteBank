@@ -29,7 +29,6 @@ Servlet implementation class
 **************************************************************************************/
 public class PackageServlet extends HttpServlet {
 	
-	private static final long serialVersionUID = 1L;
 	/*********************************************************************************
 	Initialize Data Access Object
 	**********************************************************************************/
@@ -74,12 +73,24 @@ public class PackageServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 				
 		String submitAction= request.getParameter("submitAction");
+		
+		if (submitAction == null) {
+			submitAction = "mantain";
+		}
+		
 		System.out.print("CONSOLE -- BUTTON = " + submitAction + "\n");
+		
+		String stringCode = request.getParameter("packageCode");
+		System.out.print("CONSOLE -- ENTROU stringCode: " +  stringCode + "\n ");
 
 		try {
 			
 			switch (submitAction) {
 			
+				case "mantain":
+					showUpdateForm(request, response);
+					break;
+				
 				case "/new":
 					showInsertForm(request, response);
 					break;
@@ -88,7 +99,7 @@ public class PackageServlet extends HttpServlet {
 					insertPackage(request, response);
 					break;
 					
-				case "/update":
+				case "update":
 					showUpdateForm(request, response);
 					break;
 					
@@ -120,7 +131,10 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("code"));
+		String stringCode = request.getParameter("packageCode");
+		System.out.print("CONSOLE -- ENTROU stringCode: " +  stringCode + "\n ");
+		
+		int packageCode = Integer.parseInt(request.getParameter("packageCode"));
 			
 		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
 		

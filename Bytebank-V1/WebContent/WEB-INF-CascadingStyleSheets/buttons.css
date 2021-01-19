@@ -4,15 +4,15 @@ Programmer: Rosemeire Deconti
 Date: January / 2021
 Challenge: Create Web Page ByteBank and apply JAVA knowledge
 *******************************************************************************/
-.current-date{
-    position:absolute;
-    top:0;
-    width:100%;
-	margin:0px;
-	background-color: #000000;
-	font-size: 15px;
-	font-weight: bold;
-	color: white;
-	text-align: center;
-	padding: 10px;
+.btn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: RoyalBlue;
 }
