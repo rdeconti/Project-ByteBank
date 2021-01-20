@@ -74,7 +74,7 @@ public class PackageDataAccessObject {
 	/*************************************************************************************
 	Treat Insert
 	**************************************************************************************/
-	public static void insertPackage(PackageModel myPackage) throws SQLException {
+	public void insertPackage(PackageModel myPackage) throws SQLException {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: insertPackage \n"  );  
 		
@@ -106,7 +106,7 @@ public class PackageDataAccessObject {
 	/*************************************************************************************
 	Treat Read
 	**************************************************************************************/
-	public static PackageModel readOne(int id) {
+	public PackageModel readOne(int id) {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: readOne \n"  );
 		
@@ -148,7 +148,7 @@ public class PackageDataAccessObject {
 	/*************************************************************************************
 	Treat List
 	**************************************************************************************/
-	public static List<PackageModel> readAll() {
+	public List<PackageModel> readAll() {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: readAll \n ");
 
@@ -191,7 +191,7 @@ public class PackageDataAccessObject {
 	/*************************************************************************************
 	Treat Delete
 	**************************************************************************************/
-	public static boolean deletePackage(int id) throws SQLException {
+	public boolean deletePackage(int id) throws SQLException {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: deletePackage \n ");
 		
@@ -211,7 +211,7 @@ public class PackageDataAccessObject {
 	/*************************************************************************************
 	Treat Update
 	**************************************************************************************/
-	public static boolean updatePackage(PackageModel myPackage) throws SQLException {
+	public boolean updatePackage(PackageModel myPackage) throws SQLException {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: updatePackage \n ");
 		
