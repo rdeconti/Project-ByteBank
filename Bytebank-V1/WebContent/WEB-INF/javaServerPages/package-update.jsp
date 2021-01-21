@@ -14,7 +14,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 
 	<head>
 	
-		<title>ByteBank - Package Creation</title>
+		<title>ByteBank - Package Update</title>
 		
 		<link rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -53,7 +53,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 			
 				<div class="card-body">
 				
-					<h2>Create ByteBank Package</h2>
+					<h2>Update ByteBank Package</h2>
 					
 					<form method="post" action="PackageServlet">
 					
@@ -61,7 +61,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Code</label> 
 							<input 
 								type="number"
-								value="<c:out value='${packageCode}' />" 
+								value="<c:out value='${myPackage.packageCode}' />" 								
 								class="form-control"
 								name="code" 
 								required="required">
@@ -71,7 +71,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Status</label> 
 							<input 
 								type="text"
-								value="<c:out value='${packageStatus}' />" 
+								value="<c:out value='${myPackage.packageStatus}' />" 
 								class="form-control"
 								name="status" 
 								required="required"	>
@@ -81,7 +81,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Level</label> 
 							<input 
 								type="text"
-								value="<c:out value='${packageLevel}' />" 
+								value="<c:out value='${myPackage.packageLevel}' />" 
 								class="form-control"
 								name="level" 
 								required="required">
@@ -91,7 +91,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Name</label> 
 							<input 
 								type="text"
-								value="<c:out value='${packageName}' />" 
+								value="<c:out value='${myPackage.packageName}' />" 
 								class="form-control"
 								name="name" 
 								required="required">
@@ -101,7 +101,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Description</label> 
 							<input 
 								type="text"
-								value="<c:out value='${packageDescription}' />" 
+								value="<c:out value='${myPackage.packageDescription}' />" 
 								class="form-control"
 								name="description" 
 								required="required">
@@ -111,7 +111,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Limit</label> 
 							<input 
 								type="number"
-								value="<c:out value='${packageLimit}' />" 
+								value="<c:out value='${myPackage.packageLimit}' />" 
 								class="form-control"
 								name="limit" 
 								required="required">
@@ -121,13 +121,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Fee</label> 
 							<input 
 								type="number"
-								value="<c:out value='${packageFee}' />" 
+								value="<c:out value='${myPackage.packageFee}' />" 
 								class="form-control"
 								name="fee" 
 								required="required">
 						</fieldset>
 					
-						<input type="submit" value="Create" name="/insert">
+						<input type="submit" value="Update" name="submitAction">
 						
 					</form>
 	

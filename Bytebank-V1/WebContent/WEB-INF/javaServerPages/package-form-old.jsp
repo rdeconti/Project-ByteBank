@@ -53,7 +53,33 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 			
 				<div class="card-body">
 				
-					<h2>Create ByteBank Package</h2>
+					<c:if test="${user != null}">
+						<form action="update" method="post"></form>
+					</c:if>
+					
+					<c:if test="${user == null}">
+						<form action="insert" method="post"></form>
+					</c:if>
+	
+					<caption>
+					
+						<h2>
+						
+							<c:if test="${user != null}">
+		            			Update Package of Bank
+		            		</c:if>
+		            		
+							<c:if test="${user == null}">
+		            			Create Package of Bank
+		            		</c:if>
+		            		
+						</h2>
+						
+					</caption>
+	
+					<c:if test="${user != null}">
+						<input type="hidden" name="id" value="<c:out value='${packageCode}' />" />
+					</c:if>
 					
 					<form method="post" action="PackageServlet">
 					
@@ -61,7 +87,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Code</label> 
 							<input 
 								type="number"
-								value="<c:out value='${packageCode}' />" 
+								required value="${PackageCode}" 
 								class="form-control"
 								name="code" 
 								required="required">
@@ -71,60 +97,46 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 							<label>Package Status</label> 
 							<input 
 								type="text"
+								size="1"
 								value="<c:out value='${packageStatus}' />" 
 								class="form-control"
-								name="status" 
+								name="packageStatus" 
 								required="required"	>
 						</fieldset>
 		
 						<fieldset class="form-group">
 							<label>Package Level</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageLevel}' />" 
-								class="form-control"
-								name="level" 
-								required="required">
+							<input type="text"
+								value="<c:out value='${packageLevel}' />" class="form-control"
+								name="packageLevel" required="required">
 						</fieldset>
 		
 						<fieldset class="form-group">
 							<label>Package Name</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageName}' />" 
-								class="form-control"
-								name="name" 
-								required="required">
+							<input type="text"
+								value="<c:out value='${packageName}' />" class="form-control"
+								name="packageName" required="required">
 						</fieldset>
 						
 						<fieldset class="form-group">
 							<label>Package Description</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageDescription}' />" 
-								class="form-control"
-								name="description" 
-								required="required">
+							<input type="text"
+								value="<c:out value='${packageDescription}' />" class="form-control"
+								name="packageDescription" required="required">
 						</fieldset>
 						
 						<fieldset class="form-group">
 							<label>Package Limit</label> 
-							<input 
-								type="number"
-								value="<c:out value='${packageLimit}' />" 
-								class="form-control"
-								name="limit" 
-								required="required">
+							<input type="number"
+								value="<c:out value='${packageLimit}' />" class="form-control"
+								name="packageLimit" required="required">
 						</fieldset>
 						
 						<fieldset class="form-group">
 							<label>Package Fee</label> 
-							<input 
-								type="number"
-								value="<c:out value='${packageFee}' />" 
-								class="form-control"
-								name="fee" 
-								required="required">
+							<input type="number"
+								value="<c:out value='${packageFee}' />" class="form-control"
+								name="packageFee" required="required">
 						</fieldset>
 					
 						<input type="submit" value="Create" name="/insert">

@@ -127,7 +127,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								required="required">
 						</fieldset>
 					
-						<input type="submit" value="Create" name="/insert">
+						<input type="submit" value="Create" name="submitAction">
 						
 					</form>
 	

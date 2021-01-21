@@ -54,7 +54,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 				
 				<div class="container text-left">
 	
-					<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Create package</a>
+					<a href="<%=request.getContextPath()%>/create" class="btn btn-success">Create package</a>
 					
 				</div>
 				
@@ -96,9 +96,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								<td><c:out value="${myPackage.packageFee}" /></td>
 								
 								<td>
-									<a href="edit?id=<c:out value='${user.id}' />">Update</a>
+									<a href="update?id=<c:out value='${myPackage.packageCode}' />">Update</a>
 									&nbsp;&nbsp;&nbsp;&nbsp; 
-									<a href="delete?id=<c:out value='${user.id}' />">Delete</a>
+									<a href="delete?id=<c:out value='${myPackage.packageCode}' />">Delete</a>
 								</td>
 									
 							</tr>

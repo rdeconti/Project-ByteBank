@@ -34,7 +34,7 @@ public class PackageDataAccessObject {
 	private static final String SQL_READ_ALL = "select * from " + SQL_TABLE;
 	private static final String SQL_DELETE = "delete from " + SQL_TABLE + " where packageCode = ?;";
 	private static final String SQL_UPDATE = "update " + SQL_TABLE + 
-	" set packageStatus=?, packageLevel=?, packageName=?, packageDescription=?, packageLimit=?, packageFee=? where packageCode = ?;";
+	" set packageCode=?, packageStatus=?, packageLevel=?, packageName=?, packageDescription=?, packageLimit=?, packageFee=? where packageCode = ?;";
 	
 	/*************************************************************************************
 	Default constructor
@@ -116,7 +116,7 @@ public class PackageDataAccessObject {
 
 			PreparedStatement preparedStatement = connection.prepareStatement(SQL_READ_ID);) {
 			
-			preparedStatement.setInt(1, myPackage.getPackageCode());
+			preparedStatement.setInt(1, id);
 			System.out.println(preparedStatement);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -131,6 +131,14 @@ public class PackageDataAccessObject {
 				double PackageLimit = resultSet.getDouble("PackageLimit");
 				double PackageFee = resultSet.getDouble("PackageFee");
 				
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageCode " + PackageCode);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageStatus " + PackageStatus);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageLevel " + PackageLevel);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageName " + PackageName);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageDescription " + PackageDescription);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageLimit " + PackageLimit);
+				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageFee " + PackageFee);
+				
 				myPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
 				
 			}
@@ -140,6 +148,8 @@ public class PackageDataAccessObject {
 			printSQLException(e);
 			
 		}
+		
+		System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: " + myPackage);
 		
 		return myPackage;
 		
@@ -227,6 +237,7 @@ public class PackageDataAccessObject {
 			preparedStatement.setString(5, myPackage.getPackageDescription());
 			preparedStatement.setDouble(6, myPackage.getPackageLimit());
 			preparedStatement.setDouble(7, myPackage.getPackageFee());
+			preparedStatement.setInt(8, myPackage.getPackageCode());
 
 			rowUpdated = preparedStatement.executeUpdate() > 0;
 			
