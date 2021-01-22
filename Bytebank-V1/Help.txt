@@ -2,3 +2,5 @@ HELPS:
 https://www.alura.com.br/artigos/aumentando-sua-produtividade-com-eclipse
 https://htmlcolorcodes.com/
 https://www.eclipse.org/
+
+https://www.javaguides.net/2019/03/login-form-using-jsp-servlet-jdbc-mysql-example.html

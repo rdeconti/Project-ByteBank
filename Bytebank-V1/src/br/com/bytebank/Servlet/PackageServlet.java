@@ -107,6 +107,10 @@ public class PackageServlet extends HttpServlet {
 					showDeleteForm(request, response);
 					break;
 					
+				case "/home":
+					showHomePage(request, response);
+					break;
+					
 				default:
 					listPackage(request, response);
 					break;
@@ -135,6 +139,19 @@ public class PackageServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
 		dispatcher.forward(request, response);
 		
+		
+	}
+	
+	/*********************************************************************************
+	// Show Home Page
+	**********************************************************************************/
+	private void showHomePage(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showHomePage \n ");   
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/home.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 

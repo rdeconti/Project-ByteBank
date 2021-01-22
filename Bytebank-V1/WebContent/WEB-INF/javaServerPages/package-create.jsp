@@ -1,49 +1,41 @@
 <!--
-********************************************************************************
+***********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
 Programmer: Rosemeire Deconti
 Date: January / 2021
 Challenge: Create Web Page ByteBank and apply JAVA knowledge
-********************************************************************************
+***********************************************************************************
 -->
 
+<!-- Configuring charset and pageEncoding -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- Using JSTL core -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<html>
+<!-- Determining HMTL version to server -->
+<!DOCTYPE html>
 
+<!----------------------------------------------------------------- START HTML -->
+<html lang="pt-br" dir="ltr">
+
+	<!------------------------------------------------------------- START HEAD -->
 	<head>
 	
-		<title>ByteBank - Package Creation</title>
+		<!-- Defining page title -->
+		<title>ByteBank | Package Creation</title>
 		
-		<link rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-			crossorigin="anonymous">
+		<!------------------------------------------- INCLUDE HEAD DEFINITIONS -->
+   		<jsp:include page="head.jsp"/>
 			
 	</head>
 	
+ 	<!------------------------------------------------------------- START BODY -->
 	<body>
 
-		<header>
-		
-			<nav class="navbar navbar-expand-md navbar-dark"
-			
-				style="background-color: blue">
-				
-				<div>
-					<a href="https://www.javaguides.net" class="navbar-brand"> ByteBank Application </a>
-				</div>
-	
-				<ul class="navbar-nav">
-				
-					<li><a href="<%=request.getContextPath()%>/list" class="nav-link">Packages</a></li>
-					
-				</ul>
-				
-			</nav>
-			
-		</header>
+		<!----------------------------------------------------- INCLUDE HEADER -->
+   		<jsp:include page="header-page.jsp"/>
 	
 		<br>
 	
@@ -137,6 +129,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 			
 		</div>
 	
+		<!----------------------------------------------------- INCLUDE FOOTER -->
+   		<jsp:include page="footer.jsp"/>
+		
 	</body>
 	
 </html>

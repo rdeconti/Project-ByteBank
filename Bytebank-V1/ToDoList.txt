@@ -2,3 +2,4 @@ Revisar MYSQL (String, int, char, date)
 Trocar usuário e senha do bytebank: rdeconti/$Samsung01 para user/password
 Criar para os javascripts
 Criar nova tela de erro
+Colocar a frase " YOUR DIGITAL BANK ACCOUNTS MANAGER "
