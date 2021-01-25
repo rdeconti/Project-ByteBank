@@ -28,12 +28,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		
 	</nav>
 	
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	
-		<div>	      	
-			<a href="<%=request.getContextPath()%>/home" class="navbar-brand">ByteBank Application</a>
-			
-		</div>
+	<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
 		
 		<ul class="navbar-nav">
 		

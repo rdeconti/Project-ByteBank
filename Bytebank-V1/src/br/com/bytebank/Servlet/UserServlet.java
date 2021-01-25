@@ -10,9 +10,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import jakarta.servlet.http.HttpSession;
+import br.com.bytebank.DataAccessObject.UserDataAccessObject;
+import br.com.bytebank.Model.UserModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/UserServlet")
 
 /*********************************************************************************
-// Treat CRUD to database: table PACKAGE
+// Treat CRUD to database: table USER
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private UserDataAccessObject UserDataAccessObject;
 	
 	/*****************************************************************************
 	// Instantiate DAO 
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		UserDataAccessObject = new UserDataAccessObject();
 		
 	}
 
@@ -51,27 +51,30 @@ public class PackageServlet extends HttpServlet {
 			throws ServletException, IOException {
 					
 	 	String submitAction = request.getParameter("submitAction");
-	 	System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doPost " + submitAction + "\n " );	
+	 	System.out.print("CONSOLE -- ENTROU NA SERVLET USER: doPost " + submitAction + "\n " );	
 
 		try {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "Create":
+					insertUser(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "Delete":
+					deleteUser(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "Update":
+					updateUser(request, response);
+					break;
+					
+				case "Login":
+					loginUser(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+					listUser(request, response);
 					break;
 					
 			}
@@ -91,31 +94,30 @@ public class PackageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String action = request.getServletPath();
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doGet action " + action + "\n " );
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: doGet action " + action + "\n " );
 
 		try {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/create":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/update":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/delete":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/home":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+					listUser(request, response);
 					break;
 					
 			}
@@ -131,15 +133,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listUser(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: listUser \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<UserModel> listUser = UserDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myUser", listUser);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/user-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -151,7 +153,7 @@ public class PackageServlet extends HttpServlet {
 	private void showHomePage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showHomePage \n ");   
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: showHomePage \n ");   
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/home.jsp");
 		dispatcher.forward(request, response);
@@ -164,9 +166,9 @@ public class PackageServlet extends HttpServlet {
 	private void showCreateForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/user-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -177,14 +179,14 @@ public class PackageServlet extends HttpServlet {
 	private void showUpdateForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int UserCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		UserModel existingUser = UserDataAccessObject.readOne(UserCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/user-update.jsp");
+		request.setAttribute("myUser", existingUser);
 		dispatcher.forward(request, response);
 
 	}
@@ -195,14 +197,14 @@ public class PackageServlet extends HttpServlet {
 	private void showDeleteForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int UserCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		UserModel existingUser = UserDataAccessObject.readOne(UserCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/user-delete.jsp");
+		request.setAttribute("myUser", existingUser);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,21 +212,20 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: insertUser \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int UserCode = Integer.parseInt(request.getParameter("code"));
+		String UserStatus = request.getParameter("status");
+		String UserLevel = request.getParameter("level");
+		int UserFailed = Integer.parseInt(request.getParameter("failed"));
+		String UserName = request.getParameter("name");
+		String UserPassword = request.getParameter("password");
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		UserModel newUser = new UserModel(UserCode, UserStatus, UserLevel, UserFailed, UserName, UserPassword);
+		UserDataAccessObject.insertUser(newUser);
 		
 		response.sendRedirect("list");
 		
@@ -233,21 +234,20 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: updateUser \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
-		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		int UserCode = Integer.parseInt(request.getParameter("code"));
+		String UserStatus = request.getParameter("status");
+		String UserLevel = request.getParameter("level");
+		int UserFailed = Integer.parseInt(request.getParameter("failed"));
+		String UserName = request.getParameter("name");
+		String UserPassword = request.getParameter("password");
+			
+		UserModel newUser = new UserModel(UserCode, UserStatus, UserLevel, UserFailed, UserName, UserPassword);
+		UserDataAccessObject.updateUser(newUser);
 		
 		response.sendRedirect("list");
 		
@@ -256,15 +256,76 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: deleteUser \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
+		UserDataAccessObject.deleteUser(objectKey);
 		response.sendRedirect("list");
 
 	}
 
+	/*********************************************************************************
+	// Login user
+	**********************************************************************************/
+	private void loginUser(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		
+		System.out.print("CONSOLE -- ENTROU NA SERVLET USER: loginUser \n ");  
+		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		UserModel newUser = new UserModel();
+		
+		newUser.setUserName(username);
+		newUser.setUserPassword(password);
+
+		try {
+			
+			if (UserDataAccessObject.validateUser(newUser)) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/home.jsp");
+				
+				try {
+					dispatcher.forward(request, response);
+				
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+				}
+				
+			} else {
+									
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/login-user.jsp");
+				
+				try {
+					dispatcher.forward(request, response);
+				
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+				}
+
+			}
+			
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+			
+		}
+
+	}
 }

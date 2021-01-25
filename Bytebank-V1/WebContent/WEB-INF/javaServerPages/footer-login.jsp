@@ -14,7 +14,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<header>
+<footer>
 
 	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: blue">
 		
@@ -28,4 +28,4 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		
 	</nav>
 	
-</header>
+</footer>

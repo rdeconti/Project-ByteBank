@@ -6,57 +6,84 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int UserCode;
-	private char UserStatus;
-	private char UserLevel;
+	private String UserStatus;
+	private String UserLevel;
 	private int UserFailed;
+	private String UserName;
 	private String UserPassword;
 	
 	public UserModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getUserCode() {
+
+	public UserModel
+		(int userCode, String userStatus, String userLevel, int userFailed, String userName, String userPassword) {
+		super();
+		UserCode = userCode;
+		UserStatus = userStatus;
+		UserLevel = userLevel;
+		UserFailed = userFailed;
+		UserName = userName;
+		UserPassword = userPassword;
+	}
+
+	public int getUserCode() {
 		return UserCode;
 	}
-	
+
 	private void setUserCode(int userCode) {
 		UserCode = userCode;
 	}
-	
-	private char getUserStatus() {
+
+	public String getUserStatus() {
 		return UserStatus;
 	}
-	
-	private void setUserStatus(char userStatus) {
+
+	private void setUserStatus(String userStatus) {
 		UserStatus = userStatus;
 	}
-	
-	private char getUserLevel() {
+
+	public String getUserLevel() {
 		return UserLevel;
 	}
-	
-	private void setUserLevel(char userLevel) {
+
+	private void setUserLevel(String userLevel) {
 		UserLevel = userLevel;
 	}
-	
-	private int getUserFailed() {
+
+	public int getUserFailed() {
 		return UserFailed;
 	}
-	
+
 	private void setUserFailed(int userFailed) {
 		UserFailed = userFailed;
 	}
-	
-	private String getUserPassword() {
+
+	public String getUserName() {
+		return UserName;
+	}
+
+	public void setUserName(String userName) {
+		UserName = userName;
+	}
+
+	public String getUserPassword() {
 		return UserPassword;
 	}
-	
-	private void setUserPassword(String userPassword) {
+
+	public void setUserPassword(String userPassword) {
 		UserPassword = userPassword;
 	}
-	
-	
 
+	private static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

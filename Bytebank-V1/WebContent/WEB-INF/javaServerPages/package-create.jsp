@@ -119,7 +119,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								required="required">
 						</fieldset>
 					
-						<input type="submit" value="Create" name="submitAction">
+						<input type="submit" value="CreatePackage" name="submitAction">
 						
 					</form>
 	
@@ -130,7 +130,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		</div>
 	
 		<!----------------------------------------------------- INCLUDE FOOTER -->
-   		<jsp:include page="footer.jsp"/>
+   		<jsp:include page="footer-page.jsp"/>
 		
 	</body>
 	

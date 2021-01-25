@@ -19,7 +19,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: blue">
 		
 		<div>	      	
-			<a href="<%=request.getContextPath()%>/home" class="navbar-brand">ByteBank Application</a>
+			<a href="<%=request.getContextPath()%>/home" class="navbar-brand"><img src="resources/img/bytebank-logo.png" alt="ByteBank Logo ">ByteBank Application</a>
 		</div>
 
 		<ul class="navbar-nav">
@@ -29,52 +29,47 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	</nav>
 	
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	
-		<div>	      	
-			<a href="<%=request.getContextPath()%>/home" class="navbar-brand">ByteBank Application</a>
-			
-		</div>
 		
 		<ul class="navbar-nav">
 		
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Account</a>
+			<a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Account</a>
 		  </li>
 		  
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Bank</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Bank</a>
 		  </li>
 		  
 		  <li class="nav-item">
-		    <a class="nav-link" href="#">Branch</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Branch</a>
 		  </li>
 		  
   		  <li class="nav-item">
-		    <a class="nav-link" href="#">Customer</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Customer</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">Employee</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Employee</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">Package</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Package</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">Role</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Role</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">Statement</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Statement</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">Transfer</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">Transfer</a>
 		  </li>
 		  
    		  <li class="nav-item">
-		    <a class="nav-link" href="#">User</a>
+		    <a class="nav-link" href="<%=request.getContextPath()%>/listPackage">User</a>
 		  </li>
 		  
 		</ul>

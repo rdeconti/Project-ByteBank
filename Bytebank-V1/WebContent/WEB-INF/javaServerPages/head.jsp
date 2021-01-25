@@ -7,15 +7,12 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 ***********************************************************************************
 -->
 
-<!-- Configuring charset and pageEncoding -->
+<!-- Configuring charset and pageEncoding ----------------------------------------->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- Using JSTL core -->
+<!-- Using JSTL core -------------------------------------------------------------->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<!-- Defining FAVICON  -------------------------------------------------->
-<link rel="shortcut icon" href="WEB-INF-favicon/favicon.ico" />
 
 <!-- Configuring pageEncoding and mobile first view -->
 <meta charset="UTF-8">
@@ -23,11 +20,21 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <!-- Configuring platform views -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Reset style sheets ------------------------------------------------->
-<link rel="stylesheet" href="WEB-INF-CascadingStyleSheets/reset.css">
+<!-- Reset style sheets ----------------------------------------------------------->
+<link rel="stylesheet" href="resources/css/reset.css">
 
-<!-- Bootstrap style sheets --------------------------------------------->
+<!-- Bootstrap style sheets ------------------------------------------------------->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<!-- Configuring fonts to page ------------------------------------------>
+<!-- Custom style sheets ---------------------------------------------------------->
+<link rel="stylesheet" href="resources/css/login.css">
+
+<!-- Defining FAVICON  ------------------------------------------------------------>
+<link rel="shortcut icon" href="resources/favicon/favicon.ico" />
+
+<!-- Configuring fonts to page ---------------------------------------------------->
 <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
+
+<!-- Configuring fonts and icons to page ------------------------------------------>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

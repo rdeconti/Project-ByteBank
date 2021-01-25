@@ -30,9 +30,13 @@ public class PackageDataAccessObject {
 	
 	private static final String SQL_INSERT = "insert into " + SQL_TABLE + 
 	"  (packageCode, packageStatus, packageLevel, packageName, packageDescription, packageLimit, packageFee) VALUES " + " (?, ?, ?, ?, ?, ?, ?);";
+	
 	private static final String SQL_READ_ID = "select * from " + SQL_TABLE + " where packageCode =?";
+	
 	private static final String SQL_READ_ALL = "select * from " + SQL_TABLE;
+	
 	private static final String SQL_DELETE = "delete from " + SQL_TABLE + " where packageCode = ?;";
+	
 	private static final String SQL_UPDATE = "update " + SQL_TABLE + 
 	" set packageCode=?, packageStatus=?, packageLevel=?, packageName=?, packageDescription=?, packageLimit=?, packageFee=? where packageCode = ?;";
 	
@@ -78,8 +82,6 @@ public class PackageDataAccessObject {
 		
 		System.out.print("CONSOLE -- ENTROU NA PACKAGE DATA ACCESS OBJECT: insertPackage \n"  );  
 		
-		System.out.println(SQL_INSERT);
-		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SQL_INSERT)) {
 					
@@ -90,8 +92,6 @@ public class PackageDataAccessObject {
 			preparedStatement.setString(5, myPackage.getPackageDescription());
 			preparedStatement.setDouble(6, myPackage.getPackageLimit());
 			preparedStatement.setDouble(7, myPackage.getPackageFee());
-			
-			System.out.println(preparedStatement);
 			
 			preparedStatement.executeUpdate();
 			
@@ -117,7 +117,6 @@ public class PackageDataAccessObject {
 			PreparedStatement preparedStatement = connection.prepareStatement(SQL_READ_ID);) {
 			
 			preparedStatement.setInt(1, id);
-			System.out.println(preparedStatement);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -131,14 +130,6 @@ public class PackageDataAccessObject {
 				double PackageLimit = resultSet.getDouble("PackageLimit");
 				double PackageFee = resultSet.getDouble("PackageFee");
 				
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageCode " + PackageCode);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageStatus " + PackageStatus);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageLevel " + PackageLevel);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageName " + PackageName);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageDescription " + PackageDescription);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageLimit " + PackageLimit);
-				System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: PackageFee " + PackageFee);
-				
 				myPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
 				
 			}
@@ -148,8 +139,6 @@ public class PackageDataAccessObject {
 			printSQLException(e);
 			
 		}
-		
-		System.out.println("CONSOLE -- DADOS LIDOS PARA UPADTE: " + myPackage);
 		
 		return myPackage;
 		
@@ -167,12 +156,8 @@ public class PackageDataAccessObject {
 		try (Connection connection = getConnection();
 
 			PreparedStatement preparedStatement = connection.prepareStatement(SQL_READ_ALL);) {
-			
-			System.out.println(preparedStatement);
 
 			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			System.out.println(resultSet);
 
 			while (resultSet.next()) {
 

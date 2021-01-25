@@ -1,0 +1,35 @@
+/*******************************************************************************
+Project: Seniores Digitais - Labora/Alura/Oracle ONE
+Programmer: Rosemeire Deconti
+Date: January / 2021
+Challenge: Create Web Page ByteBank and apply JAVA knowledge
+*******************************************************************************/
+.container{
+	background-image: url("../WEB-INF-images/background-circuit.jpeg");
+	background-color: #6B95E0;
+	border:2px solid blue;
+	text-align:center;
+	height:500px;
+	width:400px;
+}
+
+body{
+  padding:50px;
+}
+
+h1{
+  margin:auto;
+  color: white;
+  font-weight: bold;
+}
+
+.row{
+  height:90px;
+  width:396px;
+  background-color:blue;
+}
+
+/** ------------------------------------------------------------ Media Query **/
+@media (min-width: 640px) {
+
+}
