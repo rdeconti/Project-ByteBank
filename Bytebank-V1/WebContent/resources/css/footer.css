@@ -4,27 +4,15 @@ Programmer: Rosemeire Deconti
 Date: January / 2021
 Challenge: Create Web Page ByteBank and apply JAVA knowledge
 *******************************************************************************/
-.container{
-	border:2px solid blue;
-	text-align:center;
-	height:100%;
-	width:100%;
+.footer-logo {
+	border: 10px solid blue;
+	border-radius: 10px;
+	padding: 5px;
+	width: 150px;
 }
 
-.row{
-	height:90px;
-	width:395px;
-	background-color:blue;
-}
-
-body{
-    padding:30px;
-}
-
-h1{
-    margin:auto;
-    color: white;
-    font-weight: bold;
+.footer-logo:hover {
+	opacity: 0.5;
 }
 
 /** ------------------------------------------------------------ Media Query **/

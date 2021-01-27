@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import br.com.bytebank.DataAccessObject.StatamentDataAccessObject;
+import br.com.bytebank.Model.StatamentModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/StatamentServlet")
 
 /*********************************************************************************
-// Treat CRUD to database: table PACKAGE
+// Treat CRUD to database: table STATAMENT
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class StatamentServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private StatamentDataAccessObject StatamentDataAccessObject;
 	
 	/*****************************************************************************
 	// Initialization
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		StatamentDataAccessObject = new StatamentDataAccessObject();
 		
 	}
 
@@ -51,27 +51,27 @@ public class PackageServlet extends HttpServlet {
 			throws ServletException, IOException {
 					
 	 	String submitAction = request.getParameter("submitAction");
-	 	System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doPost " + submitAction + "\n " );	
+	 	System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: doPost " + submitAction + "\n " );	
 
 		try {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "CreateStatament":
+					insertStatament(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "DeleteStatament":
+					deleteStatament(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "UpdateStatament":
+					updateStatament(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+				case "ListStatament":
+					listStatament(request, response);
 					break;
 					
 			}
@@ -91,31 +91,31 @@ public class PackageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String action = request.getServletPath();
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doGet action " + action + "\n " );
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: doGet action " + action + "\n " );
 
 		try {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/createStatament":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/updateStatament":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/deleteStatament":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/homeStatament":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+				case "/listStatament":
+					listStatament(request, response);
 					break;
 					
 			}
@@ -131,15 +131,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listStatament(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: listStatament \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<StatamentModel> listStatament = StatamentDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myStatament", listStatament);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/statament-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -151,7 +151,7 @@ public class PackageServlet extends HttpServlet {
 	private void showHomePage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showHomePage \n ");   
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: showHomePage \n ");   
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/home.jsp");
 		dispatcher.forward(request, response);
@@ -164,9 +164,9 @@ public class PackageServlet extends HttpServlet {
 	private void showCreateForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/statament-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -177,14 +177,14 @@ public class PackageServlet extends HttpServlet {
 	private void showUpdateForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int statamentCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		StatamentModel existingStatament = StatamentDataAccessObject.readOne(statamentCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/statament-update.jsp");
+		request.setAttribute("myStatament", existingStatament);
 		dispatcher.forward(request, response);
 
 	}
@@ -195,14 +195,14 @@ public class PackageServlet extends HttpServlet {
 	private void showDeleteForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int statamentCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		StatamentModel existingStatament = StatamentDataAccessObject.readOne(statamentCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/statament-delete.jsp");
+		request.setAttribute("myStatament", existingStatament);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,60 +210,66 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertStatament(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: insertStatament \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int StatamentCode = Integer.parseInt(request.getParameter("code"));
+		String StatamentStatus = request.getParameter("status");
+		String StatamentType = request.getParameter("type");
+		int StatamentBank = Integer.parseInt(request.getParameter("bank"));
+		int StatamentBranch = Integer.parseInt(request.getParameter("branch"));
+		int StatamentAccount = Integer.parseInt(request.getParameter("account"));
+		int StatamentCustomer = Integer.parseInt(request.getParameter("customer"));
+		double StatamentAmmount = Double.parseDouble(request.getParameter("ammount"));
+		String StatamentCurrency = request.getParameter("currency");
+		String StatamentDate = request.getParameter("date");
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		StatamentModel newStatament = new StatamentModel(StatamentCode, StatamentStatus, StatamentType, StatamentBank, StatamentBranch, StatamentAccount, StatamentCustomer, StatamentAmmount, StatamentCurrency, StatamentDate);
+		StatamentDataAccessObject.insertStatament(newStatament);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listStatament");
 		
 	}
 
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateStatament(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: updateStatament \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int StatamentCode = Integer.parseInt(request.getParameter("code"));
+		String StatamentStatus = request.getParameter("status");
+		String StatamentType = request.getParameter("type");
+		int StatamentBank = Integer.parseInt(request.getParameter("bank"));
+		int StatamentBranch = Integer.parseInt(request.getParameter("branch"));
+		int StatamentAccount = Integer.parseInt(request.getParameter("account"));
+		int StatamentCustomer = Integer.parseInt(request.getParameter("customer"));
+		double StatamentAmmount = Double.parseDouble(request.getParameter("ammount"));
+		String StatamentCurrency = request.getParameter("currency");
+		String StatamentDate = request.getParameter("date");
 		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		StatamentModel newStatament = new StatamentModel(StatamentCode, StatamentStatus, StatamentType, StatamentBank, StatamentBranch, StatamentAccount, StatamentCustomer, StatamentAmmount, StatamentCurrency, StatamentDate);
+		StatamentDataAccessObject.updateStatament(newStatament);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listStatament");
 		
 	}
 
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteStatament(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET STATAMENT: deleteStatament \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
-		response.sendRedirect("listPackage");
+		StatamentDataAccessObject.deleteStatament(objectKey);
+		response.sendRedirect("listStatament");
 
 	}
 

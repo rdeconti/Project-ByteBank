@@ -6,12 +6,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class TransferModel {
+public class TransferModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int TransferCode;
-	private char TransferStatus;
+	private String TransferStatus;
 	private int TransferFromBank;
 	private int TransferFromBranch;
 	private int TransferFromAccount;
@@ -20,115 +21,141 @@ public class TransferModel {
 	private int TransferToBranch;
 	private int TransferToAccount;
 	private int TransferToCustomer;
-	private double TransferAmount;
-	private int TransferCurrency;
-	private Date TransferDate;
+	private double TransferAmmount;
+	private String TransferCurrency;
+	private String TransferDate;
 	
 	public TransferModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getTransferCode() {
-		return TransferCode;
-	}
-	
-	private void setTransferCode(int transferCode) {
+
+	public TransferModel(int transferCode, String transferStatus, int transferFromBank, int transferFromBranch,
+			int transferFromAccount, int transferFromCustomer, int transferToBank, int transferToBranch,
+			int transferToAccount, int transferToCustomer, double transferAmmount, String transferCurrency,
+			String transferDate) {
+		super();
 		TransferCode = transferCode;
-	}
-	
-	private char getTransferStatus() {
-		return TransferStatus;
-	}
-	
-	private void setTransferStatus(char transferStatus) {
 		TransferStatus = transferStatus;
-	}
-	
-	private int getTransferFromBank() {
-		return TransferFromBank;
-	}
-	
-	private void setTransferFromBank(int transferFromBank) {
 		TransferFromBank = transferFromBank;
-	}
-	
-	private int getTransferFromBranch() {
-		return TransferFromBranch;
-	}
-	
-	private void setTransferFromBranch(int transferFromBranch) {
 		TransferFromBranch = transferFromBranch;
-	}
-	
-	private int getTransferFromAccount() {
-		return TransferFromAccount;
-	}
-	
-	private void setTransferFromAccount(int transferFromAccount) {
 		TransferFromAccount = transferFromAccount;
-	}
-	
-	private int getTransferFromCustomer() {
-		return TransferFromCustomer;
-	}
-	
-	private void setTransferFromCustomer(int transferFromCustomer) {
 		TransferFromCustomer = transferFromCustomer;
-	}
-	private int getTransferToBank() {
-		return TransferToBank;
-	}
-	private void setTransferToBank(int transferToBank) {
 		TransferToBank = transferToBank;
-	}
-	
-	private int getTransferToBranch() {
-		return TransferToBranch;
-	}
-	
-	private void setTransferToBranch(int transferToBranch) {
 		TransferToBranch = transferToBranch;
-	}
-	
-	private int getTransferToAccount() {
-		return TransferToAccount;
-	}
-	
-	private void setTransferToAccount(int transferToAccount) {
 		TransferToAccount = transferToAccount;
-	}
-	
-	private int getTransferToCustomer() {
-		return TransferToCustomer;
-	}
-	
-	private void setTransferToCustomer(int transferToCustomer) {
 		TransferToCustomer = transferToCustomer;
-	}
-	
-	private double getTransferAmount() {
-		return TransferAmount;
-	}
-	
-	private void setTransferAmount(double transferAmount) {
-		TransferAmount = transferAmount;
-	}
-	
-	private int getTransferCurrency() {
-		return TransferCurrency;
-	}
-	
-	private void setTransferCurrency(int transferCurrency) {
+		TransferAmmount = transferAmmount;
 		TransferCurrency = transferCurrency;
-	}
-	
-	private Date getTransferDate() {
-		return TransferDate;
-	}
-	
-	private void setTransferDate(Date transferDate) {
 		TransferDate = transferDate;
 	}
-	
-	
+
+	public int getTransferCode() {
+		return TransferCode;
+	}
+
+	public void setTransferCode(int transferCode) {
+		TransferCode = transferCode;
+	}
+
+	public String getTransferStatus() {
+		return TransferStatus;
+	}
+
+	public void setTransferStatus(String transferStatus) {
+		TransferStatus = transferStatus;
+	}
+
+	public int getTransferFromBank() {
+		return TransferFromBank;
+	}
+
+	public void setTransferFromBank(int transferFromBank) {
+		TransferFromBank = transferFromBank;
+	}
+
+	public int getTransferFromBranch() {
+		return TransferFromBranch;
+	}
+
+	public void setTransferFromBranch(int transferFromBranch) {
+		TransferFromBranch = transferFromBranch;
+	}
+
+	public int getTransferFromAccount() {
+		return TransferFromAccount;
+	}
+
+	public void setTransferFromAccount(int transferFromAccount) {
+		TransferFromAccount = transferFromAccount;
+	}
+
+	public int getTransferFromCustomer() {
+		return TransferFromCustomer;
+	}
+
+	public void setTransferFromCustomer(int transferFromCustomer) {
+		TransferFromCustomer = transferFromCustomer;
+	}
+
+	public int getTransferToBank() {
+		return TransferToBank;
+	}
+
+	public void setTransferToBank(int transferToBank) {
+		TransferToBank = transferToBank;
+	}
+
+	public int getTransferToBranch() {
+		return TransferToBranch;
+	}
+
+	public void setTransferToBranch(int transferToBranch) {
+		TransferToBranch = transferToBranch;
+	}
+
+	public int getTransferToAccount() {
+		return TransferToAccount;
+	}
+
+	public void setTransferToAccount(int transferToAccount) {
+		TransferToAccount = transferToAccount;
+	}
+
+	public int getTransferToCustomer() {
+		return TransferToCustomer;
+	}
+
+	public void setTransferToCustomer(int transferToCustomer) {
+		TransferToCustomer = transferToCustomer;
+	}
+
+	public double getTransferAmmount() {
+		return TransferAmmount;
+	}
+
+	public void setTransferAmmount(double transferAmount) {
+		TransferAmmount = transferAmount;
+	}
+
+	public String getTransferCurrency() {
+		return TransferCurrency;
+	}
+
+	public void setTransferCurrency(String transferCurrency) {
+		TransferCurrency = transferCurrency;
+	}
+
+	public String getTransferDate() {
+		return TransferDate;
+	}
+
+	public void setTransferDate(String transferDate) {
+		TransferDate = transferDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

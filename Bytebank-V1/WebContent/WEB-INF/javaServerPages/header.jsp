@@ -14,12 +14,12 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<footer>
+<header class="fixed-top">
 
 	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: blue">
 		
 		<div>	      	
-			<a href="<%=request.getContextPath()%>/home" class="navbar-brand">ByteBank Application</a>
+			<a href="<%=request.getContextPath()%>/home" class="navbar-brand"><img class="header-logo" src="resources/img/bytebank-logo.png" alt="ByteBank Logo "></a>
 		</div>
 
 		<ul class="navbar-nav">
@@ -28,4 +28,4 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		
 	</nav>
 	
-</footer>
+</header>

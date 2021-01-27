@@ -35,9 +35,10 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	<body>
 
 		<!----------------------------------------------------- INCLUDE HEADER -->
-   		<jsp:include page="header-page.jsp"/>
-	
-		<br>
+   		<jsp:include page="header.jsp"/>     	
+		<jsp:include page="navigation.jsp"/>
+       	<br />
+       	<br />
 	
 		<div class="container col-md-5">
 		
@@ -130,7 +131,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		</div>
 	
 		<!----------------------------------------------------- INCLUDE FOOTER -->
-   		<jsp:include page="footer-page.jsp"/>
+   		<jsp:include page="footer.jsp"/>
 		
 	</body>
 	

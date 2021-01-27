@@ -6,66 +6,84 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class BankModel {
+import java.io.Serializable;
 
+public class BankModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int BankCode;
-	private char BankStatus; 
+	private String BankStatus; 
 	private String BankName; 
 	private int BankAddress; 
 	private int BankContact; 
 	private int BankEmployee;
-
-	public BankModel() {
-	}
 	
-	private int getBankCode() {
+	public BankModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public BankModel(int bankCode, String bankStatus, String bankName, int bankAddress, int bankContact,
+			int bankEmployee) {
+		super();
+		BankCode = bankCode;
+		BankStatus = bankStatus;
+		BankName = bankName;
+		BankAddress = bankAddress;
+		BankContact = bankContact;
+		BankEmployee = bankEmployee;
+	}
+
+	public int getBankCode() {
 		return BankCode;
 	}
 
-	private void setBankCode(int bankCode) {
+	public void setBankCode(int bankCode) {
 		BankCode = bankCode;
 	}
 
-	private char getBankStatus() {
+	public String getBankStatus() {
 		return BankStatus;
 	}
 
-	private void setBankStatus(char bankStatus) {
+	public void setBankStatus(String bankStatus) {
 		BankStatus = bankStatus;
 	}
 
-	private String getBankName() {
+	public String getBankName() {
 		return BankName;
 	}
 
-	private void setBankName(String bankName) {
+	public void setBankName(String bankName) {
 		BankName = bankName;
 	}
 
-	private int getBankAddress() {
+	public int getBankAddress() {
 		return BankAddress;
 	}
 
-	private void setBankAddress(int bankAddress) {
+	public void setBankAddress(int bankAddress) {
 		BankAddress = bankAddress;
 	}
 
-	private int getBankContact() {
+	public int getBankContact() {
 		return BankContact;
 	}
 
-	private void setBankContact(int bankContact) {
+	public void setBankContact(int bankContact) {
 		BankContact = bankContact;
 	}
 
-	private int getBankEmployee() {
+	public int getBankEmployee() {
 		return BankEmployee;
 	}
 
-	private void setBankEmployee(int bankEmployee) {
+	public void setBankEmployee(int bankEmployee) {
 		BankEmployee = bankEmployee;
 	}
-	
-	
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

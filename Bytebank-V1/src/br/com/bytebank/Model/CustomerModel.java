@@ -7,10 +7,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class CustomerModel {
+import java.io.Serializable;
+
+public class CustomerModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int CustomerCode;
-	private char CustomerStatus;
+	private String CustomerStatus;
 	private String CustomerName;
 	private int CustomerType;
 	private int CustomerDocs;
@@ -19,71 +22,89 @@ public class CustomerModel {
 	private int CustomerUser;
 	
 	public CustomerModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getCustomerCode() {
-		return CustomerCode;
-	}
-	
-	private void setCustomerCode(int customerCode) {
+
+	public CustomerModel(int customerCode, String customerStatus, String customerName, int customerType,
+			int customerDocs, int customerAddress, int customerContact, int customerUser) {
+		super();
 		CustomerCode = customerCode;
-	}
-	
-	private char getCustomerStatus() {
-		return CustomerStatus;
-	}
-	
-	private void setCustomerStatus(char customerStatus) {
 		CustomerStatus = customerStatus;
-	}
-	
-	private String getCustomerName() {
-		return CustomerName;
-	}
-	
-	private void setCustomerName(String customerName) {
 		CustomerName = customerName;
-	}
-	
-	private int getCustomerType() {
-		return CustomerType;
-	}
-	
-	private void setCustomerType(int customerType) {
 		CustomerType = customerType;
-	}
-	
-	private int getCustomerDocs() {
-		return CustomerDocs;
-	}
-	
-	private void setCustomerDocs(int customerDocs) {
 		CustomerDocs = customerDocs;
-	}
-	
-	private int getCustomerAddress() {
-		return CustomerAddress;
-	}
-	
-	private void setCustomerAddress(int customerAddress) {
 		CustomerAddress = customerAddress;
-	}
-	
-	private int getCustomerContact() {
-		return CustomerContact;
-	}
-	
-	private void setCustomerContact(int customerContact) {
 		CustomerContact = customerContact;
-	}
-	
-	private int getCustomerUser() {
-		return CustomerUser;
-	}
-	
-	private void setCustomerUser(int customerUser) {
 		CustomerUser = customerUser;
 	}
-	
+
+	public int getCustomerCode() {
+		return CustomerCode;
+	}
+
+	public void setCustomerCode(int customerCode) {
+		CustomerCode = customerCode;
+	}
+
+	public String getCustomerStatus() {
+		return CustomerStatus;
+	}
+
+	public void setCustomerStatus(String customerStatus) {
+		CustomerStatus = customerStatus;
+	}
+
+	public String getCustomerName() {
+		return CustomerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		CustomerName = customerName;
+	}
+
+	public int getCustomerType() {
+		return CustomerType;
+	}
+
+	public void setCustomerType(int customerType) {
+		CustomerType = customerType;
+	}
+
+	public int getCustomerDocs() {
+		return CustomerDocs;
+	}
+
+	public void setCustomerDocs(int customerDocs) {
+		CustomerDocs = customerDocs;
+	}
+
+	public int getCustomerAddress() {
+		return CustomerAddress;
+	}
+
+	public void setCustomerAddress(int customerAddress) {
+		CustomerAddress = customerAddress;
+	}
+
+	public int getCustomerContact() {
+		return CustomerContact;
+	}
+
+	public void setCustomerContact(int customerContact) {
+		CustomerContact = customerContact;
+	}
+
+	public int getCustomerUser() {
+		return CustomerUser;
+	}
+
+	public void setCustomerUser(int customerUser) {
+		CustomerUser = customerUser;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

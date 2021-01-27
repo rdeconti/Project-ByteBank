@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import br.com.bytebank.DataAccessObject.BankDataAccessObject;
+import br.com.bytebank.Model.BankModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/BankServlet")
 
 /*********************************************************************************
 // Treat CRUD to database: table PACKAGE
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class BankServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private BankDataAccessObject BankDataAccessObject;
 	
 	/*****************************************************************************
 	// Initialization
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		BankDataAccessObject = new BankDataAccessObject();
 		
 	}
 
@@ -57,21 +57,21 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "CreateBank":
+					insertBank(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "DeleteBank":
+					deleteBank(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "UpdateBank":
+					updateBank(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+				case "ListBank":
+					listBank(request, response);
 					break;
 					
 			}
@@ -97,25 +97,25 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/createBank":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/updateBank":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/deleteBank":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/homeBank":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+				case "/listBank":
+					listBank(request, response);
 					break;
 					
 			}
@@ -131,15 +131,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listBank(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listBank \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<BankModel> listBank = BankDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myBank", listBank);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/bank-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -166,7 +166,7 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/bank-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -179,12 +179,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int bankCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		BankModel existingBank = BankDataAccessObject.readOne(bankCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/bank-update.jsp");
+		request.setAttribute("myBank", existingBank);
 		dispatcher.forward(request, response);
 
 	}
@@ -197,12 +197,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int bankCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		BankModel existingBank = BankDataAccessObject.readOne(bankCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/bank-delete.jsp");
+		request.setAttribute("myBank", existingBank);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,60 +210,58 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertBank(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
-		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertBank \n ");
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		int BankCode = Integer.parseInt(request.getParameter("code"));
+		String BankStatus = request.getParameter("status");
+		String BankName = request.getParameter("name");
+		int BankAddress = Integer.parseInt(request.getParameter("address"));
+		int BankContact = Integer.parseInt(request.getParameter("contact"));
+		int BankEmployee = Integer.parseInt(request.getParameter("employee"));
+			
+		BankModel newBank = new BankModel(BankCode, BankStatus, BankName, BankAddress, BankContact, BankEmployee);
+		BankDataAccessObject.insertBank(newBank);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listBank");
 		
 	}
 
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateBank(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updateBank \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int BankCode = Integer.parseInt(request.getParameter("code"));
+		String BankStatus = request.getParameter("status");
+		String BankName = request.getParameter("name");
+		int BankAddress = Integer.parseInt(request.getParameter("address"));
+		int BankContact = Integer.parseInt(request.getParameter("contact"));
+		int BankEmployee = Integer.parseInt(request.getParameter("employee"));
 		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		BankModel newBank = new BankModel(BankCode, BankStatus, BankName, BankAddress, BankContact, BankEmployee);
+		BankDataAccessObject.updateBank(newBank);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listBank");
 		
 	}
 
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteBank(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deleteBank \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
-		response.sendRedirect("listPackage");
+		BankDataAccessObject.deleteBank(objectKey);
+		response.sendRedirect("listBank");
 
 	}
 

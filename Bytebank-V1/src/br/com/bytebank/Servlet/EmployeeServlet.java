@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import br.com.bytebank.DataAccessObject.EmployeeDataAccessObject;
+import br.com.bytebank.Model.EmployeeModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/EmployeeServlet")
 
 /*********************************************************************************
 // Treat CRUD to database: table PACKAGE
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class EmployeeServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private EmployeeDataAccessObject EmployeeDataAccessObject;
 	
 	/*****************************************************************************
 	// Initialization
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		EmployeeDataAccessObject = new EmployeeDataAccessObject();
 		
 	}
 
@@ -57,21 +57,21 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "CreateEmployee":
+					insertEmployee(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "DeleteEmployee":
+					deleteEmployee(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "UpdateEmployee":
+					updateEmployee(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+				case "ListEmployee":
+					listEmployee(request, response);
 					break;
 					
 			}
@@ -97,25 +97,25 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/createEmployee":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/updateEmployee":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/deleteEmployee":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/homeEmployee":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+				case "/listEmployee":
+					listEmployee(request, response);
 					break;
 					
 			}
@@ -131,15 +131,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listEmployee(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listEmployee \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<EmployeeModel> listEmployee = EmployeeDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myEmployee", listEmployee);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/employee-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -166,7 +166,7 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/employee-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -179,12 +179,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int employeeCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		EmployeeModel existingEmployee = EmployeeDataAccessObject.readOne(employeeCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/employee-update.jsp");
+		request.setAttribute("myEmployee", existingEmployee);
 		dispatcher.forward(request, response);
 
 	}
@@ -197,12 +197,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int employeeCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		EmployeeModel existingEmployee = EmployeeDataAccessObject.readOne(employeeCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/employee-delete.jsp");
+		request.setAttribute("myEmployee", existingEmployee);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,60 +210,62 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertEmployee(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertEmployee \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int EmployeeCode = Integer.parseInt(request.getParameter("code"));
+		String EmployeeStatus = request.getParameter("status");
+		String EmployeeName = request.getParameter("name");
+		String EmployeeType = request.getParameter("type");
+		int EmployeeDocs = Integer.parseInt(request.getParameter("docs"));
+		int EmployeeAddress = Integer.parseInt(request.getParameter("address"));
+		int EmployeeContact = Integer.parseInt(request.getParameter("contact"));
+		int EmployeeUser = Integer.parseInt(request.getParameter("user"));
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		EmployeeModel newEmployee = new EmployeeModel(EmployeeCode, EmployeeStatus, EmployeeName, EmployeeType, EmployeeDocs, EmployeeAddress, EmployeeContact, EmployeeUser);
+		EmployeeDataAccessObject.insertEmployee(newEmployee);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listEmployee");
 		
 	}
 
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateEmployee(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updateEmployee \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int EmployeeCode = Integer.parseInt(request.getParameter("code"));
+		String EmployeeStatus = request.getParameter("status");
+		String EmployeeName = request.getParameter("name");
+		String EmployeeType = request.getParameter("type");
+		int EmployeeDocs = Integer.parseInt(request.getParameter("docs"));
+		int EmployeeAddress = Integer.parseInt(request.getParameter("address"));
+		int EmployeeContact = Integer.parseInt(request.getParameter("contact"));
+		int EmployeeUser = Integer.parseInt(request.getParameter("user"));
 		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		EmployeeModel newEmployee = new EmployeeModel(EmployeeCode, EmployeeStatus, EmployeeName, EmployeeType, EmployeeDocs, EmployeeAddress, EmployeeContact, EmployeeUser);
+		EmployeeDataAccessObject.updateEmployee(newEmployee);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listEmployee");
 		
 	}
 
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteEmployee(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deleteEmployee \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
-		response.sendRedirect("listPackage");
+		EmployeeDataAccessObject.deleteEmployee(objectKey);
+		response.sendRedirect("listEmployee");
 
 	}
 

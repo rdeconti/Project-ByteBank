@@ -6,82 +6,104 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class EmployeeModel {
+import java.io.Serializable;
+
+public class EmployeeModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int EmployeeCode;
-	private char EmployeeStatus;
+	private String EmployeeStatus;
 	private String EmployeeName;
-	private char EmployeeType;
+	private String EmployeeType;
 	private int EmployeeDocs;
 	private int EmployeeAddress;
 	private int EmployeeContact;
 	private int EmployeeUser;
 	
 	public EmployeeModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	private int getEmployeeCode() {
+	public EmployeeModel(int employeeCode, String employeeStatus, String employeeName, String employeeType,
+			int employeeDocs, int employeeAddress, int employeeContact, int employeeUser) {
+		super();
+		EmployeeCode = employeeCode;
+		EmployeeStatus = employeeStatus;
+		EmployeeName = employeeName;
+		EmployeeType = employeeType;
+		EmployeeDocs = employeeDocs;
+		EmployeeAddress = employeeAddress;
+		EmployeeContact = employeeContact;
+		EmployeeUser = employeeUser;
+	}
+
+	public int getEmployeeCode() {
 		return EmployeeCode;
 	}
 
-	private void setEmployeeCode(int employeeCode) {
+	public void setEmployeeCode(int employeeCode) {
 		EmployeeCode = employeeCode;
 	}
 
-	private char getEmployeeStatus() {
+	public String getEmployeeStatus() {
 		return EmployeeStatus;
 	}
 
-	private void setEmployeeStatus(char employeeStatus) {
+	public void setEmployeeStatus(String employeeStatus) {
 		EmployeeStatus = employeeStatus;
 	}
 
-	private String getEmployeeName() {
+	public String getEmployeeName() {
 		return EmployeeName;
 	}
 
-	private void setEmployeeName(String employeeName) {
+	public void setEmployeeName(String employeeName) {
 		EmployeeName = employeeName;
 	}
 
-	private char getEmployeeType() {
+	public String getEmployeeType() {
 		return EmployeeType;
 	}
 
-	private void setEmployeeType(char employeeType) {
+	public void setEmployeeType(String employeeType) {
 		EmployeeType = employeeType;
 	}
 
-	private int getEmployeeDocs() {
+	public int getEmployeeDocs() {
 		return EmployeeDocs;
 	}
 
-	private void setEmployeeDocs(int employeeDocs) {
+	public void setEmployeeDocs(int employeeDocs) {
 		EmployeeDocs = employeeDocs;
 	}
 
-	private int getEmployeeAddress() {
+	public int getEmployeeAddress() {
 		return EmployeeAddress;
 	}
 
-	private void setEmployeeAddress(int employeeAddress) {
+	public void setEmployeeAddress(int employeeAddress) {
 		EmployeeAddress = employeeAddress;
 	}
 
-	private int getEmployeeContact() {
+	public int getEmployeeContact() {
 		return EmployeeContact;
 	}
 
-	private void setEmployeeContact(int employeeContact) {
+	public void setEmployeeContact(int employeeContact) {
 		EmployeeContact = employeeContact;
 	}
 
-	private int getEmployeeUser() {
+	public int getEmployeeUser() {
 		return EmployeeUser;
 	}
 
-	private void setEmployeeUser(int employeeUser) {
+	public void setEmployeeUser(int employeeUser) {
 		EmployeeUser = employeeUser;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

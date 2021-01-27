@@ -35,7 +35,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	<body>
 	
 		<!----------------------------------------------------- INCLUDE HEADER -->
-   		<jsp:include page="header-login.jsp"/>
+   		<jsp:include page="header.jsp"/>
        	<br />
        	<br />
        	

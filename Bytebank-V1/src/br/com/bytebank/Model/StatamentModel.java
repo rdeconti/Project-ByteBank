@@ -6,104 +6,126 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StatamentModel {
+public class StatamentModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int StatamentCode;
-	private char StatamentStatus;
-	private char StatamentType;
+	private String StatamentStatus;
+	private String StatamentType;
 	private int StatamentBank;
 	private int StatamentBranch;
 	private int StatamentAccount;
 	private int StatamentCustomer;
 	private double StatamentAmount;
-	private int StatamentCurrency;
-	private Date StatamentDate;
+	private String StatamentCurrency;
+	private String StatamentDate;
 	
 	public StatamentModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getStatamentCode() {
-		return StatamentCode;
-	}
-	
-	private void setStatamentCode(int statamentCode) {
+
+	public StatamentModel(int statamentCode, String statamentStatus, String statamentType, int statamentBank,
+			int statamentBranch, int statamentAccount, int statamentCustomer, double statamentAmount,
+			String statamentCurrency, String statamentDate) {
+		super();
 		StatamentCode = statamentCode;
-	}
-	
-	private char getStatamentStatus() {
-		return StatamentStatus;
-	}
-	
-	private void setStatamentStatus(char statamentStatus) {
 		StatamentStatus = statamentStatus;
-	}
-	
-	private char getStatamentType() {
-		return StatamentType;
-	}
-	
-	private void setStatamentType(char statamentType) {
 		StatamentType = statamentType;
-	}
-	
-	private int getStatamentBank() {
-		return StatamentBank;
-	}
-	
-	private void setStatamentBank(int statamentBank) {
 		StatamentBank = statamentBank;
-	}
-	
-	private int getStatamentBranch() {
-		return StatamentBranch;
-	}
-	
-	private void setStatamentBranch(int statamentBranch) {
 		StatamentBranch = statamentBranch;
-	}
-	
-	private int getStatamentAccount() {
-		return StatamentAccount;
-	}
-	
-	private void setStatamentAccount(int statamentAccount) {
 		StatamentAccount = statamentAccount;
-	}
-	
-	private int getStatamentCustomer() {
-		return StatamentCustomer;
-	}
-	
-	private void setStatamentCustomer(int statamentCustomer) {
 		StatamentCustomer = statamentCustomer;
-	}
-	
-	private double getStatamentAmount() {
-		return StatamentAmount;
-	}
-	
-	private void setStatamentAmount(double statamentAmount) {
 		StatamentAmount = statamentAmount;
-	}
-	
-	private int getStatamentCurrency() {
-		return StatamentCurrency;
-	}
-	
-	private void setStatamentCurrency(int statamentCurrency) {
 		StatamentCurrency = statamentCurrency;
-	}
-	
-	private Date getStatamentDate() {
-		return StatamentDate;
-	}
-	
-	private void setStatamentDate(Date statamentDate) {
 		StatamentDate = statamentDate;
 	}
-	
-	
+
+	public int getStatamentCode() {
+		return StatamentCode;
+	}
+
+	public void setStatamentCode(int statamentCode) {
+		StatamentCode = statamentCode;
+	}
+
+	public String getStatamentStatus() {
+		return StatamentStatus;
+	}
+
+	public void setStatamentStatus(String statamentStatus) {
+		StatamentStatus = statamentStatus;
+	}
+
+	public String getStatamentType() {
+		return StatamentType;
+	}
+
+	public void setStatamentType(String statamentType) {
+		StatamentType = statamentType;
+	}
+
+	public int getStatamentBank() {
+		return StatamentBank;
+	}
+
+	public void setStatamentBank(int statamentBank) {
+		StatamentBank = statamentBank;
+	}
+
+	public int getStatamentBranch() {
+		return StatamentBranch;
+	}
+
+	public void setStatamentBranch(int statamentBranch) {
+		StatamentBranch = statamentBranch;
+	}
+
+	public int getStatamentAccount() {
+		return StatamentAccount;
+	}
+
+	public void setStatamentAccount(int statamentAccount) {
+		StatamentAccount = statamentAccount;
+	}
+
+	public int getStatamentCustomer() {
+		return StatamentCustomer;
+	}
+
+	public void setStatamentCustomer(int statamentCustomer) {
+		StatamentCustomer = statamentCustomer;
+	}
+
+	public double getStatamentAmount() {
+		return StatamentAmount;
+	}
+
+	public void setStatamentAmount(double statamentAmount) {
+		StatamentAmount = statamentAmount;
+	}
+
+	public String getStatamentCurrency() {
+		return StatamentCurrency;
+	}
+
+	public void setStatamentCurrency(String statamentCurrency) {
+		StatamentCurrency = statamentCurrency;
+	}
+
+	public String getStatamentDate() {
+		return StatamentDate;
+	}
+
+	public void setStatamentDate(String statamentDate) {
+		StatamentDate = statamentDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 }

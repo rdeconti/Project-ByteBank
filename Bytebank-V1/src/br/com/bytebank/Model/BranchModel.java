@@ -6,10 +6,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class BranchModel {
+import java.io.Serializable;
+
+public class BranchModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int BranchCode; 
-	private char BranchStatus; 
+	private String BranchStatus; 
 	private String BranchName; 
 	private int BranchAddress; 
 	private int BranchContact; 
@@ -17,62 +20,80 @@ public class BranchModel {
 	private int BranchBank;
 	
 	public BranchModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getBranchCode() {
-		return BranchCode;
-	}
-	
-	private void setBranchCode(int branchCode) {
+
+	public BranchModel(int branchCode, String branchStatus, String branchName, int branchAddress, int branchContact,
+			int branchEmployee, int branchBank) {
+		super();
 		BranchCode = branchCode;
-	}
-	
-	private char getBranchStatus() {
-		return BranchStatus;
-	}
-	
-	private void setBranchStatus(char branchStatus) {
 		BranchStatus = branchStatus;
-	}
-	
-	private String getBranchName() {
-		return BranchName;
-	}
-	
-	private void setBranchName(String branchName) {
 		BranchName = branchName;
-	}
-	
-	private int getBranchAddress() {
-		return BranchAddress;
-	}
-	
-	private void setBranchAddress(int branchAddress) {
 		BranchAddress = branchAddress;
-	}
-	private int getBranchContact() {
-		return BranchContact;
-	}
-	private void setBranchContact(int branchContact) {
 		BranchContact = branchContact;
-	}
-	
-	private int getBranchEmployee() {
-		return BranchEmployee;
-	}
-	
-	private void setBranchEmployee(int branchEmployee) {
 		BranchEmployee = branchEmployee;
-	}
-	
-	private int getBranchBank() {
-		return BranchBank;
-	}
-	
-	private void setBranchBank(int branchBank) {
 		BranchBank = branchBank;
 	}
-	
-	
 
+	public int getBranchCode() {
+		return BranchCode;
+	}
+
+	public void setBranchCode(int branchCode) {
+		BranchCode = branchCode;
+	}
+
+	public String getBranchStatus() {
+		return BranchStatus;
+	}
+
+	public void setBranchStatus(String branchStatus) {
+		BranchStatus = branchStatus;
+	}
+
+	public String getBranchName() {
+		return BranchName;
+	}
+
+	public void setBranchName(String branchName) {
+		BranchName = branchName;
+	}
+
+	public int getBranchAddress() {
+		return BranchAddress;
+	}
+
+	public void setBranchAddress(int branchAddress) {
+		BranchAddress = branchAddress;
+	}
+
+	public int getBranchContact() {
+		return BranchContact;
+	}
+
+	public void setBranchContact(int branchContact) {
+		BranchContact = branchContact;
+	}
+
+	public int getBranchEmployee() {
+		return BranchEmployee;
+	}
+
+	public void setBranchEmployee(int branchEmployee) {
+		BranchEmployee = branchEmployee;
+	}
+
+	public int getBranchBank() {
+		return BranchBank;
+	}
+
+	public void setBranchBank(int branchBank) {
+		BranchBank = branchBank;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import br.com.bytebank.DataAccessObject.BranchDataAccessObject;
+import br.com.bytebank.Model.BranchModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/BranchServlet")
 
 /*********************************************************************************
 // Treat CRUD to database: table PACKAGE
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class BranchServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private BranchDataAccessObject BranchDataAccessObject;
 	
 	/*****************************************************************************
 	// Initialization
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		BranchDataAccessObject = new BranchDataAccessObject();
 		
 	}
 
@@ -57,21 +57,21 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "CreateBranch":
+					insertBranch(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "DeleteBranch":
+					deleteBranch(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "UpdateBranch":
+					updateBranch(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+				case "ListBranch":
+					listBranch(request, response);
 					break;
 					
 			}
@@ -97,25 +97,25 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/createBranch":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/updateBranch":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/deleteBranch":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/homeBranch":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+				case "/listBranch":
+					listBranch(request, response);
 					break;
 					
 			}
@@ -131,15 +131,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listBranch(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listBranch \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<BranchModel> listBranch = BranchDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myBranch", listBranch);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/branch-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -166,7 +166,7 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/branch-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -179,12 +179,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int branchCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		BranchModel existingBranch = BranchDataAccessObject.readOne(branchCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/branch-update.jsp");
+		request.setAttribute("myBranch", existingBranch);
 		dispatcher.forward(request, response);
 
 	}
@@ -197,12 +197,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int branchCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		BranchModel existingBranch = BranchDataAccessObject.readOne(branchCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/branch-delete.jsp");
+		request.setAttribute("myBranch", existingBranch);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,60 +210,60 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertBranch(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertBranch \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int BranchCode = Integer.parseInt(request.getParameter("code"));
+		String BranchStatus = request.getParameter("status");
+		String BranchName = request.getParameter("name");
+		int BranchAddress = Integer.parseInt(request.getParameter("address"));
+		int BranchContact = Integer.parseInt(request.getParameter("contact"));
+		int BranchEmployee = Integer.parseInt(request.getParameter("employee"));
+		int BranchBank = Integer.parseInt(request.getParameter("bank"));
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		BranchModel newBranch = new BranchModel(BranchCode, BranchStatus, BranchName, BranchAddress, BranchContact, BranchEmployee, BranchBank);
+		BranchDataAccessObject.insertBranch(newBranch);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("list");
 		
 	}
 
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateBranch(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updateBranch \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int BranchCode = Integer.parseInt(request.getParameter("code"));
+		String BranchStatus = request.getParameter("status");
+		String BranchName = request.getParameter("name");
+		int BranchAddress = Integer.parseInt(request.getParameter("address"));
+		int BranchContact = Integer.parseInt(request.getParameter("contact"));
+		int BranchEmployee = Integer.parseInt(request.getParameter("employee"));
+		int BranchBank = Integer.parseInt(request.getParameter("bank"));
 		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		BranchModel newBranch = new BranchModel(BranchCode, BranchStatus, BranchName, BranchAddress, BranchContact, BranchEmployee, BranchBank);
+		BranchDataAccessObject.updateBranch(newBranch);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("list");
 		
 	}
 
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteBranch(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deleteBranch \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
-		response.sendRedirect("listPackage");
+		BranchDataAccessObject.deleteBranch(objectKey);
+		response.sendRedirect("list");
 
 	}
 

@@ -6,113 +6,136 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class AccountModel {
+public class AccountModel implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private int AccountCode;
-	private char AccountStatus; 
-	private char AccountType; 
+	private String AccountStatus; 
+	private String AccountType; 
 	private double AccountAmount; 
-	private int AccountCurrency; 
-	private Date AccountOpenDate; 
-	private Date AccountCloseDate; 
+	private String AccountCurrency; 
+	private String AccountOpenDate; 
+	private String AccountCloseDate; 
 	private int AccountBank; 
 	private int AccountBranch; 
 	private int AccountPackage; 
 	private int AccountEmployee;
 	
 	public AccountModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	private int getAccountCode() {
+	public AccountModel(int accountCode, String accountStatus, String accountType, double accountAmount,
+			String accountCurrency, String accountOpenDate, String accountCloseDate, int accountBank, int accountBranch,
+			int accountPackage, int accountEmployee) {
+		super();
+		AccountCode = accountCode;
+		AccountStatus = accountStatus;
+		AccountType = accountType;
+		AccountAmount = accountAmount;
+		AccountCurrency = accountCurrency;
+		AccountOpenDate = accountOpenDate;
+		AccountCloseDate = accountCloseDate;
+		AccountBank = accountBank;
+		AccountBranch = accountBranch;
+		AccountPackage = accountPackage;
+		AccountEmployee = accountEmployee;
+	}
+
+	public int getAccountCode() {
 		return AccountCode;
 	}
 
-	private void setAccountCode(int accountCode) {
+	public void setAccountCode(int accountCode) {
 		AccountCode = accountCode;
 	}
 
-	private char getAccountStatus() {
+	public String getAccountStatus() {
 		return AccountStatus;
 	}
 
-	private void setAccountStatus(char accountStatus) {
+	public void setAccountStatus(String accountStatus) {
 		AccountStatus = accountStatus;
 	}
 
-	private char getAccountType() {
+	public String getAccountType() {
 		return AccountType;
 	}
 
-	private void setAccountType(char accountType) {
+	public void setAccountType(String accountType) {
 		AccountType = accountType;
 	}
 
-	private double getAccountAmount() {
+	public double getAccountAmount() {
 		return AccountAmount;
 	}
 
-	private void setAccountAmount(double accountAmount) {
+	public void setAccountAmount(double accountAmount) {
 		AccountAmount = accountAmount;
 	}
 
-	private int getAccountCurrency() {
+	public String getAccountCurrency() {
 		return AccountCurrency;
 	}
 
-	private void setAccountCurrency(int accountCurrency) {
+	public void setAccountCurrency(String accountCurrency) {
 		AccountCurrency = accountCurrency;
 	}
 
-	private Date getAccountOpenDate() {
+	public String getAccountOpenDate() {
 		return AccountOpenDate;
 	}
 
-	private void setAccountOpenDate(Date accountOpenDate) {
+	public void setAccountOpenDate(String accountOpenDate) {
 		AccountOpenDate = accountOpenDate;
 	}
 
-	private Date getAccountCloseDate() {
+	public String getAccountCloseDate() {
 		return AccountCloseDate;
 	}
 
-	private void setAccountCloseDate(Date accountCloseDate) {
+	public void setAccountCloseDate(String accountCloseDate) {
 		AccountCloseDate = accountCloseDate;
 	}
 
-	private int getAccountBank() {
+	public int getAccountBank() {
 		return AccountBank;
 	}
 
-	private void setAccountBank(int accountBank) {
+	public void setAccountBank(int accountBank) {
 		AccountBank = accountBank;
 	}
 
-	private int getAccountBranch() {
+	public int getAccountBranch() {
 		return AccountBranch;
 	}
 
-	private void setAccountBranch(int accountBranch) {
+	public void setAccountBranch(int accountBranch) {
 		AccountBranch = accountBranch;
 	}
 
-	private int getAccountPackage() {
+	public int getAccountPackage() {
 		return AccountPackage;
 	}
 
-	private void setAccountPackage(int accountPackage) {
+	public void setAccountPackage(int accountPackage) {
 		AccountPackage = accountPackage;
 	}
 
-	private int getAccountEmployee() {
+	public int getAccountEmployee() {
 		return AccountEmployee;
 	}
 
-	private void setAccountEmployee(int accountEmployee) {
+	public void setAccountEmployee(int accountEmployee) {
 		AccountEmployee = accountEmployee;
 	}
-	
-	
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

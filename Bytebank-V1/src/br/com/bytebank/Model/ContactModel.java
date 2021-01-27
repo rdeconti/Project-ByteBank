@@ -6,47 +6,63 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class ContactModel {
+import java.io.Serializable;
 
+public class ContactModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int ContactCode;
-	private char ContactStatus; 
+	private String ContactStatus; 
 	private String ContactEmail; 
 	private int ContactPhone;
 	
 	public ContactModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	private int getContactCode() {
-		return ContactCode;
-	}
-	
-	private void setContactCode(int contactCode) {
+
+	public ContactModel(int contactCode, String contactStatus, String contactEmail, int contactPhone) {
+		super();
 		ContactCode = contactCode;
-	}
-	private char getContactStatus() {
-		return ContactStatus;
-	}
-	
-	private void setContactStatus(char contactStatus) {
 		ContactStatus = contactStatus;
-	}
-	
-	private String getContactEmail() {
-		return ContactEmail;
-	}
-	
-	private void setContactEmail(String contactEmail) {
 		ContactEmail = contactEmail;
-	}
-	
-	private int getContactPhone() {
-		return ContactPhone;
-	}
-	
-	private void setContactPhone(int contactPhone) {
 		ContactPhone = contactPhone;
 	}
-	
-	
+
+	public int getContactCode() {
+		return ContactCode;
+	}
+
+	public void setContactCode(int contactCode) {
+		ContactCode = contactCode;
+	}
+
+	public String getContactStatus() {
+		return ContactStatus;
+	}
+
+	public void setContactStatus(String contactStatus) {
+		ContactStatus = contactStatus;
+	}
+
+	public String getContactEmail() {
+		return ContactEmail;
+	}
+
+	public void setContactEmail(String contactEmail) {
+		ContactEmail = contactEmail;
+	}
+
+	public int getContactPhone() {
+		return ContactPhone;
+	}
+
+	public void setContactPhone(int contactPhone) {
+		ContactPhone = contactPhone;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

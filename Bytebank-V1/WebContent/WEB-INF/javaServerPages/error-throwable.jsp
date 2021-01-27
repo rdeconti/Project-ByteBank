@@ -35,31 +35,6 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		
 		<!------------------------------------------- INCLUDE HEAD DEFINITIONS -->
    		<jsp:include page="head.jsp"/>
-   		
-		<style>
-			
-			.error-main{
-				background-color: #fff;
-				box-shadow: 0px 10px 10px -10px #5D6572;
-			}
-			
-			.error-main h1{
-				font-weight: bold;
-				color: #444444;
-				font-size: 100px;
-				text-shadow: 2px 4px 5px #6E6E6E;
-			}
-			
-			.error-main h6{
-				color: #42494F;
-			}
-			
-			.error-main p{
-				color: #9897A0;
-				font-size: 14px; 
-			}
-	      
-		</style>
 			
 	</head>
 	
@@ -67,9 +42,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	<body>
 	
 		<!----------------------------------------------------- INCLUDE HEADER -->
-   		<jsp:include page="header-page.jsp"/>
-		
-		<br>
+   		<jsp:include page="header.jsp"/>
+       	<br />
+       	<br />
+       	
+		<jsp:include page="navigation.jsp"/>
+       	<br />
+       	<br />
 		
 	    <div class="container">
 	      <div class="row text-center">
@@ -90,7 +69,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	    </div>
 	    
    		<!----------------------------------------------------- INCLUDE FOOTER -->
-   		<jsp:include page="footer-page.jsp"/>
+   		<jsp:include page="footer.jsp"/>
 	
 	</body>
 	

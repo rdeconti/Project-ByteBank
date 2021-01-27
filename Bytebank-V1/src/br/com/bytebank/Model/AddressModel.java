@@ -6,83 +6,104 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 **************************************************************************************/
 package br.com.bytebank.Model;
 
-public class AddressModel {
+import java.io.Serializable;
 
+public class AddressModel implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private int AddressCode;
-	private char AddressStatus;
-	private int AddressCountry;
-	private int AddressState;
-	private int AddressCity;
-	private int AddressNumber;
-	private int AddressCep;
+	private String AddressStatus;
+	private String AddressCountry;
+	private String AddressState;
+	private String AddressCity;
+	private String AddressNumber;
+	private String AddressCep;
 	private String AddressDetail;
 	
 	public AddressModel() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	private int getAddressCode() {
+	public AddressModel(int addressCode, String addressStatus, String addressCountry, String addressState,
+			String addressCity, String addressNumber, String addressCep, String addressDetail) {
+		super();
+		AddressCode = addressCode;
+		AddressStatus = addressStatus;
+		AddressCountry = addressCountry;
+		AddressState = addressState;
+		AddressCity = addressCity;
+		AddressNumber = addressNumber;
+		AddressCep = addressCep;
+		AddressDetail = addressDetail;
+	}
+
+	public int getAddressCode() {
 		return AddressCode;
 	}
 
-	private void setAddressCode(int addressCode) {
+	public void setAddressCode(int addressCode) {
 		AddressCode = addressCode;
 	}
 
-	private char getAddressStatus() {
+	public String getAddressStatus() {
 		return AddressStatus;
 	}
 
-	private void setAddressStatus(char addressStatus) {
+	public void setAddressStatus(String addressStatus) {
 		AddressStatus = addressStatus;
 	}
 
-	private int getAddressCountry() {
+	public String getAddressCountry() {
 		return AddressCountry;
 	}
 
-	private void setAddressCountry(int addressCountry) {
+	public void setAddressCountry(String addressCountry) {
 		AddressCountry = addressCountry;
 	}
 
-	private int getAddressState() {
+	public String getAddressState() {
 		return AddressState;
 	}
 
-	private void setAddressState(int addressState) {
+	public void setAddressState(String addressState) {
 		AddressState = addressState;
 	}
 
-	private int getAddressCity() {
+	public String getAddressCity() {
 		return AddressCity;
 	}
 
-	private void setAddressCity(int addressCity) {
+	public void setAddressCity(String addressCity) {
 		AddressCity = addressCity;
 	}
 
-	private int getAddressNumber() {
+	public String getAddressNumber() {
 		return AddressNumber;
 	}
 
-	private void setAddressNumber(int addressNumber) {
+	public void setAddressNumber(String addressNumber) {
 		AddressNumber = addressNumber;
 	}
 
-	private int getAddressCep() {
+	public String getAddressCep() {
 		return AddressCep;
 	}
 
-	private void setAddressCep(int addressCep) {
+	public void setAddressCep(String addressCep) {
 		AddressCep = addressCep;
 	}
 
-	private String getAddressDetail() {
+	public String getAddressDetail() {
 		return AddressDetail;
 	}
 
-	private void setAddressDetail(String addressDetail) {
+	public void setAddressDetail(String addressDetail) {
 		AddressDetail = addressDetail;
 	}
-	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

@@ -35,17 +35,25 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	<body>
 	
 		<!----------------------------------------------------- INCLUDE HEADER -->
-   		<jsp:include page="header-home.jsp"/>
-       	<br />
-       	<br />
+   		<jsp:include page="header.jsp"/>
+   		
+		<!------------------------------------------------------- INCLUDE MAIN -->
+   		<main class="container-fluid p-0 pr-sm-3 pl-sm-3">
+   		
+	    	<!--------------------------------------------- INCLUDE NAVIGATION -->
+			<jsp:include page="navigation.jsp"/>
+	       	<br />
+	       	<br />
        	
        	
-       	
-    	<!----------------------------------------------------- INCLUDE FOOTER -->
-    	<br />
-       	<br />
-   		<jsp:include page="footer-home.jsp"/>     	
-		
+	       	
+	    	<!-------------------------------------------------- INCLUDE FOOTER -->
+	    	<br />
+	       	<br />
+	   		<jsp:include page="footer.jsp"/>    
+   		
+   		</main>
+   		      	
 	</body>
 	
 </html>

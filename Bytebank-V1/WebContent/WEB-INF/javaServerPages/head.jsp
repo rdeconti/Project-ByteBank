@@ -27,6 +27,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!-- Custom style sheets ---------------------------------------------------------->
+<link rel="stylesheet" href="resources/css/error.css">
+<link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/login.css">
 
 <!-- Defining FAVICON  ------------------------------------------------------------>

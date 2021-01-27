@@ -36,7 +36,7 @@ public class UserServlet extends HttpServlet {
 	private UserDataAccessObject UserDataAccessObject;
 	
 	/*****************************************************************************
-	// Instantiate DAO 
+	// Initialization
 	******************************************************************************/
 	public void init() {
 			

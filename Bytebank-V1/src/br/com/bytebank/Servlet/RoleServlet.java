@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import br.com.bytebank.DataAccessObject.PackageDataAccessObject;
-import br.com.bytebank.Model.PackageModel;
+import br.com.bytebank.DataAccessObject.RoleDataAccessObject;
+import br.com.bytebank.Model.RoleModel;
 
 /*********************************************************************************
 Project: Seniores Digitais - Labora/Alura/Oracle ONE
@@ -24,23 +24,23 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 /*********************************************************************************
 // Addressing servlet
 **********************************************************************************/
-@WebServlet("/PackageServlet")
+@WebServlet("/RoleServlet")
 
 /*********************************************************************************
 // Treat CRUD to database: table PACKAGE
 **********************************************************************************/
-public class PackageServlet extends HttpServlet {
+public class RoleServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private PackageDataAccessObject PackageDataAccessObject;
+	private RoleDataAccessObject RoleDataAccessObject;
 	
 	/*****************************************************************************
 	// Initialization
 	******************************************************************************/
 	public void init() {
 			
-		PackageDataAccessObject = new PackageDataAccessObject();
+		RoleDataAccessObject = new RoleDataAccessObject();
 		
 	}
 
@@ -57,21 +57,21 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (submitAction) {
 								
-				case "CreatePackage":
-					insertPackage(request, response);
+				case "CreateRole":
+					insertRole(request, response);
 					break;
 
-				case "DeletePackage":
-					deletePackage(request, response);
+				case "DeleteRole":
+					deleteRole(request, response);
 					break;
 									
-				case "UpdatePackage":
-					updatePackage(request, response);
+				case "UpdateRole":
+					updateRole(request, response);
 					break;
 					
 				default:
-				case "ListPackage":
-					listPackage(request, response);
+				case "ListRole":
+					listRole(request, response);
 					break;
 					
 			}
@@ -97,25 +97,25 @@ public class PackageServlet extends HttpServlet {
 			
 			switch (action) {
 			
-				case "/createPackage":
+				case "/createRole":
 					showCreateForm(request, response);
 					break;
 
-				case "/updatePackage":
+				case "/updateRole":
 					showUpdateForm(request, response);
 					break;
 					
-				case "/deletePackage":
+				case "/deleteRole":
 					showDeleteForm(request, response);
 					break;
 					
-				case "/homePackage":
+				case "/homeRole":
 					showHomePage(request, response);
 					break;
 					
 				default:
-				case "/listPackage":
-					listPackage(request, response);
+				case "/listRole":
+					listRole(request, response);
 					break;
 					
 			}
@@ -131,15 +131,15 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/
-	private void listPackage(HttpServletRequest request, HttpServletResponse response)
+	private void listRole(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 			
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listPackage \n ");    
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: listRole \n ");    
 		
-		List<PackageModel> listPackage = PackageDataAccessObject.readAll();
+		List<RoleModel> listRole = RoleDataAccessObject.readAll();
 		
-		request.setAttribute("myPackage", listPackage);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-list.jsp");
+		request.setAttribute("myRole", listRole);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/role-list.jsp");
 		dispatcher.forward(request, response);
 		
 		
@@ -166,7 +166,7 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showCreateForm \n ");   
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-create.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/role-create.jsp");
 		dispatcher.forward(request, response);
 		
 	}
@@ -179,12 +179,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showUpdateForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int roleCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		RoleModel existingRole = RoleDataAccessObject.readOne(roleCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-update.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/role-update.jsp");
+		request.setAttribute("myRole", existingRole);
 		dispatcher.forward(request, response);
 
 	}
@@ -197,12 +197,12 @@ public class PackageServlet extends HttpServlet {
 		
 		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: showDeleteForm \n ");
 		
-		int packageCode = Integer.parseInt(request.getParameter("id"));
+		int roleCode = Integer.parseInt(request.getParameter("id"));
 		
-		PackageModel existingPackage = PackageDataAccessObject.readOne(packageCode);
+		RoleModel existingRole = RoleDataAccessObject.readOne(roleCode);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/package-delete.jsp");
-		request.setAttribute("myPackage", existingPackage);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/javaServerPages/role-delete.jsp");
+		request.setAttribute("myRole", existingRole);
 		dispatcher.forward(request, response);
 
 	}
@@ -210,60 +210,60 @@ public class PackageServlet extends HttpServlet {
 	/*********************************************************************************
 	// Insert database table record
 	**********************************************************************************/
-	private void insertPackage(HttpServletRequest request, HttpServletResponse response) 
+	private void insertRole(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertPackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: insertRole \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int RoleCode = Integer.parseInt(request.getParameter("code"));
+		String RoleStatus = request.getParameter("status");
+		String RoleName = request.getParameter("name");
+		String RoleDescription = request.getParameter("description");
+		double RoleSalary = Double.parseDouble(request.getParameter("salary"));
+		double RoleBonus = Double.parseDouble(request.getParameter("bonus"));
+		String RoleCurrency = request.getParameter("currency");
 			
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.insertPackage(newPackage);
+		RoleModel newRole = new RoleModel(RoleCode, RoleStatus, RoleName, RoleDescription, RoleSalary, RoleBonus, RoleCurrency);
+		RoleDataAccessObject.insertRole(newRole);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listRole");
 		
 	}
 
 	/*********************************************************************************
 	// Update database table record
 	**********************************************************************************/
-	private void updatePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void updateRole(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {		
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updatePackage \n ");
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: updateRole \n ");
 		
-		int PackageCode = Integer.parseInt(request.getParameter("code"));
-		String PackageStatus = request.getParameter("status");
-		String PackageLevel = request.getParameter("level");
-		String PackageName = request.getParameter("name");
-		String PackageDescription = request.getParameter("description");
-		double PackageLimit = Double.parseDouble(request.getParameter("limit"));
-		double PackageFee = Double.parseDouble(request.getParameter("fee"));
+		int RoleCode = Integer.parseInt(request.getParameter("code"));
+		String RoleStatus = request.getParameter("status");
+		String RoleName = request.getParameter("name");
+		String RoleDescription = request.getParameter("description");
+		double RoleSalary = Double.parseDouble(request.getParameter("salary"));
+		double RoleBonus = Double.parseDouble(request.getParameter("bonus"));
+		String RoleCurrency = request.getParameter("currency");
 		
-		PackageModel newPackage = new PackageModel(PackageCode, PackageStatus, PackageLevel, PackageName, PackageDescription, PackageLimit, PackageFee);
-		PackageDataAccessObject.updatePackage(newPackage);
+		RoleModel newRole = new RoleModel(RoleCode, RoleStatus, RoleName, RoleDescription, RoleSalary, RoleBonus, RoleCurrency);
+		RoleDataAccessObject.updateRole(newRole);
 		
-		response.sendRedirect("listPackage");
+		response.sendRedirect("listRole");
 		
 	}
 
 	/*********************************************************************************
 	// Delete database table record
 	**********************************************************************************/
-	private void deletePackage(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteRole(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deletePackage \n ");  
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: deleteRole \n ");  
 		
 		int objectKey = Integer.parseInt(request.getParameter("code"));
-		PackageDataAccessObject.deletePackage(objectKey);
-		response.sendRedirect("listPackage");
+		RoleDataAccessObject.deleteRole(objectKey);
+		response.sendRedirect("listRole");
 
 	}
 

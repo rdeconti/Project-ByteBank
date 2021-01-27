@@ -31,13 +31,13 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/javaServerPages/error-java.jsp</location>
 	</error-page>
-	
+
+	<!-- 
+
 	<servlet>
 		<servlet-name>PackageServlet</servlet-name>
 		<servlet-class>br.com.bytebank.Servlet.PackageServlet</servlet-class>
 	</servlet>
-	
-	<!-- 
 	
 	<servlet-mapping>
 		<servlet-name>PackageServlet</servlet-name>
@@ -54,6 +54,17 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<url-pattern>/userServlet</url-pattern>
 	</servlet-mapping>
 	
- 	-->
+		<servlet>
+		<servlet-name>HomeServlet</servlet-name>
+		<servlet-class>br.com.bytebank.Servlet.HomeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>HomeServlet</servlet-name>
+		<url-pattern>/homeServlet</url-pattern>
+	</servlet-mapping>
+	
+	-->
+	
 	
 </web-app>
