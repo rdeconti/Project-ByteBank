@@ -14,13 +14,19 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<footer>
+<header class="fixed-top">
 
-	<div class="footer-container">
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: blue">
+		
+		<div>	      	
+			<a href="<%=request.getContextPath()%>/home" class="navbar-brand"><img class="header-logo" src="resources/img/bytebank-logo.png" alt="ByteBank Logo "></a>
+		</div>
+
+		<ul class="navbar-nav">
+			<li><a href="<%=request.getContextPath()%>/home" class="nav-link">Your Digital Bank Manager</a></li>
+		</ul>
+		
+	</nav>
 	
-		<a class="header-anchor" href="<%=request.getContextPath()%>/home"><img class="header-logo" src="resources/img/bytebank-logo.png" alt="ByteBank Logo"></a>  
-	  	<a href="<%=request.getContextPath()%>/home">Your Digital Bank Manager</a>
-	  
-	</div>
+</header>
 
-</footer>

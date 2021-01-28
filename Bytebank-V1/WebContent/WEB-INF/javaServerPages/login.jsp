@@ -39,88 +39,87 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
        	<br />
        	<br />
        	
-		<form method="post" action="UserServlet">
+       	<main>
+       	
+   			<form method="post" action="UserServlet">
 		
-			<div class="container">
-			
-				<div class="division">
+				<div class="login-container">
 				
-					<div class="row">
-					
-				 		<h1>Login your account</h1>
-		       
-		        	</div>
-		        	
+					<h1 class="login-header">Login ByteBank</h1>
 		        	<br />
 		        	<br />
-		        
-		           	<div class="input-group">
-		           	
-						<div class="input-group-prepend">
+	        				           	
+           			<div class="login-division">
 						
-							<span class="input-group-text"><i class="fas fa-user-lock"></i></span>
-							
-						</div>
+						<span><i class="fas fa-user-lock custom-icon"></i></span>
 						
 						<input 
 							type="text"
-							value="<c:out value='${userName}' />" 
-							class="form-control" 							 
+							value="<c:out value='${userName}' />" 						 
 							name="username" 
 							required="required"
 							placeholder="type your username"
 						/>
-						
+			
 					</div>
 					
-					<br />
-		         
-		           	<div class="input-group">
-		           	
-						<div class="input-group-prepend">
+		        	<br />
+					
+					<div>
+					
+						<span><i class="fas fa-key custom-icon"></i></span>
 						
-							<span class="input-group-text"><i class="fa fa-key icon"></i></span>
-							
-						</div>
-												
 						<input 
+					
 							type="Password"
-							value="<c:out value='${userPassword}' />" 
-							class="form-control" 							 
+							value="<c:out value='${userPassword}' />" 							 
 							name="password" 
 							required="required"
 							placeholder="type your password"
+						
 						/>
 						
-						</div>
-						
-						<br />
-						
-			            <div class="checkbox">
-			            
-			              	<label><input type="checkbox" value=""/> Remember me</label>
-			              
-			            </div>
-			            
-			            <br />
-			            			            
-		              	<button type="submit" value="Login" name="submitAction" class="btn btn-success"><span class="glyphicon glyphicon-off"></span>Login</button>	         
-		         
-			        	<br />
-			        	<br />
-		               	          		
-				        <div class="footer">
-				        
-		                  	<p>Don't have an Account! <a href="#">Sign Up Here</a></p>
-			          		<p>Forgot <a href="#">Password ?</a></p>
-			          		
-				        </div>
-					
 					</div>
-	 
-			</div>
+					
+		        	<br />
+		        	
+		            <div>
+		            
+		              	<label><input type="checkbox" value=""/> Remember me</label>
+		              
+		            </div>
+		            
+           		 	<br />
+		            
+		            <div>
+		            
+   		              	<button class="header-button" type="submit" value="Login" name="submitAction" >Login</button>	
+		            
+		            </div>
+		            
+		        	<br />
+		               	          		
+			        <div>
+			        
+	                  	<a class="header-anchor-line" href="#">Don't have an Account ?  Sign Up Here !</a>
+     			        
+     			        <br />
+       			        <br />
+		          		
+		          		<a class = "header-anchor-line" href="#">Do you forgot password ?</a>
+		          		
+			        </div>
+		        			        	
+	        	</div>					
 		
-		</form>	
+			</form>	
+       	
+       	</main>
+       	
+		<!----------------------------------------------------- INCLUDE FOOTER -->
+       	<br />
+       	<br />
+   		<jsp:include page="footer.jsp"/>
 		
 	</body>
 	

@@ -1,0 +1,72 @@
+/*******************************************************************************
+Project: Seniores Digitais - Labora/Alura/Oracle ONE
+Programmer: Rosemeire Deconti
+Date: January / 2021
+Challenge: Create Web Page ByteBank and apply JAVA knowledge
+*******************************************************************************/
+.navigation-container {
+  background-color: blue;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+}
+
+.navigation-ul {
+  background-color: blue;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navigation-li {
+  float: left;
+  color: blue;
+}
+
+.navigation-li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.navigation-li a:hover {
+  background-color: #111111;
+}
+
+.navigation-input-logo {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  width: 40%;
+  height: 40%;
+}
+
+.navigation-input {
+  background-color: blue;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation-input:hover {
+  background-color: white;
+  color: blue;
+}
+
+/** ------------------------------------------------------------ Media Query **/
+/** TODO REVIEW RESPONSIVITY **/
+@media (min-width: 640px) {
+
+}

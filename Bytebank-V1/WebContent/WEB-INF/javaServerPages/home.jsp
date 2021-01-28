@@ -37,22 +37,41 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<!----------------------------------------------------- INCLUDE HEADER -->
    		<jsp:include page="header.jsp"/>
    		
+    	<!------------------------------------------------- INCLUDE NAVIGATION -->
+		<jsp:include page="navigation.jsp"/>
+       	<br />
+       	<br />
+   		
 		<!------------------------------------------------------- INCLUDE MAIN -->
    		<main class="container-fluid p-0 pr-sm-3 pl-sm-3">
    		
-	    	<!--------------------------------------------- INCLUDE NAVIGATION -->
-			<jsp:include page="navigation.jsp"/>
-	       	<br />
-	       	<br />
+
        	
        	
 	       	
-	    	<!-------------------------------------------------- INCLUDE FOOTER -->
-	    	<br />
-	       	<br />
-	   		<jsp:include page="footer.jsp"/>    
+  
    		
    		</main>
+   		
+    	<!-------------------------------------------------- INCLUDE FOOTER -->
+    	<br />
+       	<br />
+   		<jsp:include page="footer.jsp"/>  
+   		
+   		<!-- TODO VERIFICAR TODOS JAVASCRIPTS -->
+		<!---------------------------------------------------------- JAVASCRIPT -->
+   		<script>
+   		
+			function myFunction() {
+			  var x = document.getElementById("myTopnav");
+			  if (x.className === "topnav") {
+			    x.className += " responsive";
+			  } else {
+			    x.className = "topnav";
+			  }
+			}
+			
+		</script>
    		      	
 	</body>
 	
