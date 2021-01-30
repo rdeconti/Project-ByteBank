@@ -28,12 +28,10 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/icons.css">
 <link rel="stylesheet" href="resources/css/login.css">
+<link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/navigation.css">
 
-
 <link rel="stylesheet" href="resources/css/error.css">
-
-
 
 <!-- Defining FAVICON  ------------------------------------------------------------>
 <link rel="shortcut icon" href="resources/favicon/favicon.ico" />

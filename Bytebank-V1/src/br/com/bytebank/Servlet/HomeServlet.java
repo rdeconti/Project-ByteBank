@@ -135,7 +135,7 @@ public class HomeServlet extends HttpServlet {
 					break;
 					
 				default:
-				case "Home":
+				case "HomeServlet":
 					showHomePage(request, response);
 					break;
 					
@@ -203,7 +203,7 @@ public class HomeServlet extends HttpServlet {
 					break;
 					
 				default:
-				case "/home":
+				case "/HomeServlet":
 					showHomePage(request, response);
 					break;
 					
