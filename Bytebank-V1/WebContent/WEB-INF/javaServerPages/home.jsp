@@ -50,7 +50,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
    		
    		</main>
    		
-    	<!-------------------------------------------------- INCLUDE FOOTER -->
+    	<!------------------------------------------------------ INCLUDE FOOTER -->
     	<br />
        	<br />
    		<jsp:include page="footer.jsp"/>  

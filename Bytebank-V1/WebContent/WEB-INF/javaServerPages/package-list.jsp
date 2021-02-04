@@ -36,39 +36,27 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	
 		<!----------------------------------------------------- INCLUDE HEADER -->
    		<jsp:include page="header-home.jsp"/>
-       	<br />
-       	<br />
 
-		<div class="row">
+		<main class="main-container">
 		
-			<div class="container">
-			
-				<h3 class="text-center">List of ByteBank Packages</h3>
+				<h1 class="main-header">List of Packages</h1>
 				
-				<hr>
+     			<br />
 				
-				<div class="container text-left">
-	
-					<a href="<%=request.getContextPath()%>/createPackage" class="btn btn-success">Create package</a>
-					
-				</div>
-				
-				<br>
-				
-				<table class="table table-bordered">
+				<table class="main-table">
 				
 					<thead>
 					
 						<tr>
 						
-							<th>Code</th>
-							<th>Status</th>
-							<th>Level</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Limit</th>
-							<th>Tax</th>
-							<th>Actions</th>
+							<th class="main-table-header">Code</th>
+							<th class="main-table-header">Status</th>
+							<th class="main-table-header">Level</th>
+							<th class="main-table-header">Name</th>
+							<th class="main-table-header">Description</th>
+							<th class="main-table-header">Limit</th>
+							<th class="main-table-header">Tax</th>
+							<th class="main-table-header">User action</th>
 							
 						</tr>
 						
@@ -78,7 +66,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 					
 						<jsp:useBean id="dao" class="br.com.bytebank.DataAccessObject.PackageDataAccessObject" scope="request"/> 
 																			
-						<c:forEach var="myPackage" items="${dao.readAll()}">
+						<c:forEach var="myPackage" items="${dao.readAll()}">					
 	
 							<tr>
 															
@@ -90,12 +78,20 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 								<td><c:out value="${myPackage.packageLimit}" /></td>
 								<td><c:out value="${myPackage.packageFee}" /></td>
 								
-								<td>
-									<a href="updatePackage?id=<c:out value='${myPackage.packageCode}' />">Update</a>
-									&nbsp;&nbsp;&nbsp;&nbsp; 
-									<a href="deletePackage?id=<c:out value='${myPackage.packageCode}' />">Delete</a>
-								</td>
+								<td>								
+											
+									<form method="post" action="PackageServlet">
 									
+										<input type="hidden" name="id" value=<c:out value='${myPackage.packageCode}' />>
+																											
+										<button class="custom-icon-button" type="submit" value="/updatePackage" name="submitAction" ><span><i class="fas fa-user-edit custom-icon-list"></i></span></button>
+										<button class="custom-icon-button" type="submit" value="/deletePackage" name="submitAction" ><span><i class="fas fa-trash-alt custom-icon-list"></i></span></button>																			
+										<button class="custom-icon-button" type="submit" value="/createPackage" name="submitAction" ><span><i class="fas fa-plus-circle custom-icon-list"></i></span></button>
+																		
+									</form>
+						
+								</td>
+			
 							</tr>
 							
 						</c:forEach>
@@ -104,9 +100,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	
 				</table>
 				
-			</div>
-			
-		</div>
+    			<br />
+				
+		</main>
 		
 		<!----------------------------------------------------- INCLUDE FOOTER -->
    		<jsp:include page="footer.jsp"/>

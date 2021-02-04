@@ -39,93 +39,85 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
        	<br />
        	<br />
 	
-		<div class="container col-md-5">
-		
-			<div class="card">
+		<div class="crud-container">
+				
+			<h2 class="crud-header" >Update ByteBank Package</h2>
 			
-				<div class="card-body">
+			<form method="post" action="PackageServlet">
+			
+				<fieldset class="crud-group">
+					<label>Package Code</label> 
+					<input 
+						type="number"
+						value="<c:out value='${myPackage.packageCode}' />" 								
+						class="form-control"
+						name="code" 
+						required="required">
+				</fieldset>
+
+				<fieldset class="crud-group">
+					<label>Package Status</label> 
+					<input 
+						type="text"
+						value="<c:out value='${myPackage.packageStatus}' />" 
+						class="form-control"
+						name="status" 
+						required="required"	>
+				</fieldset>
+
+				<fieldset class="crud-group">
+					<label>Package Level</label> 
+					<input 
+						type="text"
+						value="<c:out value='${myPackage.packageLevel}' />" 
+						class="form-control"
+						name="level" 
+						required="required">
+				</fieldset>
+
+				<fieldset class="crud-group">
+					<label>Package Name</label> 
+					<input 
+						type="text"
+						value="<c:out value='${myPackage.packageName}' />" 
+						class="form-control"
+						name="name" 
+						required="required">
+				</fieldset>
 				
-					<h2>Update ByteBank Package</h2>
-					
-					<form method="post" action="PackageServlet">
-					
-						<fieldset class="form-group">
-							<label>Package Code</label> 
-							<input 
-								type="number"
-								value="<c:out value='${myPackage.packageCode}' />" 								
-								class="form-control"
-								name="code" 
-								required="required">
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Status</label> 
-							<input 
-								type="text"
-								value="<c:out value='${myPackage.packageStatus}' />" 
-								class="form-control"
-								name="status" 
-								required="required"	>
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Level</label> 
-							<input 
-								type="text"
-								value="<c:out value='${myPackage.packageLevel}' />" 
-								class="form-control"
-								name="level" 
-								required="required">
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Name</label> 
-							<input 
-								type="text"
-								value="<c:out value='${myPackage.packageName}' />" 
-								class="form-control"
-								name="name" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Description</label> 
-							<input 
-								type="text"
-								value="<c:out value='${myPackage.packageDescription}' />" 
-								class="form-control"
-								name="description" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Limit</label> 
-							<input 
-								type="number"
-								value="<c:out value='${myPackage.packageLimit}' />" 
-								class="form-control"
-								name="limit" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Fee</label> 
-							<input 
-								type="number"
-								value="<c:out value='${myPackage.packageFee}' />" 
-								class="form-control"
-								name="fee" 
-								required="required">
-						</fieldset>
-					
-						<input type="submit" value="UpdatePackage" name="submitAction">
-						
-					</form>
-	
-				</div>
+				<fieldset class="crud-group">
+					<label>Package Description</label> 
+					<input 
+						type="text"
+						value="<c:out value='${myPackage.packageDescription}' />" 
+						class="form-control"
+						name="description" 
+						required="required">
+				</fieldset>
 				
-			</div>
+				<fieldset class="crud-group">
+					<label>Package Limit</label> 
+					<input 
+						type="number"
+						value="<c:out value='${myPackage.packageLimit}' />" 
+						class="form-control"
+						name="limit" 
+						required="required">
+				</fieldset>
+				
+				<fieldset class="crud-group">
+					<label>Package Fee</label> 
+					<input 
+						type="number"
+						value="<c:out value='${myPackage.packageFee}' />" 
+						class="form-control"
+						name="fee" 
+						required="required">
+				</fieldset>
+			
+				<input type="submit" value="UpdatePackage" name="submitAction">
+				
+			</form>
 			
 		</div>
 	

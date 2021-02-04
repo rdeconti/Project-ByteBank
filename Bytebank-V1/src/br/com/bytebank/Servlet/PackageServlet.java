@@ -52,35 +52,8 @@ public class PackageServlet extends HttpServlet {
 					
 	 	String submitAction = request.getParameter("submitAction");
 	 	System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doPost " + submitAction + "\n " );	
-
-		try {
-			
-			switch (submitAction) {
-								
-				case "CreatePackage":
-					insertPackage(request, response);
-					break;
-
-				case "DeletePackage":
-					deletePackage(request, response);
-					break;
-									
-				case "UpdatePackage":
-					updatePackage(request, response);
-					break;
-					
-				default:
-				case "ListPackage":
-					listPackage(request, response);
-					break;
-					
-			}
-			
-		} catch (SQLException ex) {
-			
-			throw new ServletException(ex);
-			
-		}
+	 	
+	 	treatUserOption(submitAction, request, response);
 		
 	}
 
@@ -90,44 +63,67 @@ public class PackageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String action = request.getServletPath();
-		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doGet action " + action + "\n " );
+		String submitAction = request.getServletPath();
+		System.out.print("CONSOLE -- ENTROU NA SERVLET PACKAGE: doGet action " + submitAction + "\n " );
 
-		try {
-			
-			switch (action) {
-			
-				case "/createPackage":
-					showCreateForm(request, response);
-					break;
-
-				case "/updatePackage":
-					showUpdateForm(request, response);
-					break;
-					
-				case "/deletePackage":
-					showDeleteForm(request, response);
-					break;
-					
-				case "/homePackage":
-					showHomePage(request, response);
-					break;
-					
-				default:
-				case "/listPackage":
-					listPackage(request, response);
-					break;
-					
-			}
-			
-		} catch (SQLException ex) {
-			
-			throw new ServletException(ex);
-			
-		}
+	 	treatUserOption(submitAction, request, response);
 		
 	}
 
+	/*****************************************************************************
+	// Treat option done by user about CRUD
+	******************************************************************************/
+	private void treatUserOption(String submitAction, HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {{
+
+		try {
+			
+				switch (submitAction) {
+				
+					case "/createPackage":
+						showCreateForm(request, response);
+						break;
+		
+					case "/updatePackage":
+						showUpdateForm(request, response);
+						break;
+						
+					case "/deletePackage":
+						showDeleteForm(request, response);
+						break;
+						
+					case "/homePackage":
+						showHomePage(request, response);
+						break;
+														
+					case "CreatePackage":
+						insertPackage(request, response);
+						break;
+		
+					case "DeletePackage":
+						deletePackage(request, response);
+						break;
+										
+					case "UpdatePackage":
+						updatePackage(request, response);
+						break;
+						
+					default:
+					case "/listPackage":
+						listPackage(request, response);
+						break;
+						
+				}
+			
+			} catch (SQLException e) {
+				
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+		}
+	}
+	
 	/*********************************************************************************
 	// List all records from database table
 	**********************************************************************************/

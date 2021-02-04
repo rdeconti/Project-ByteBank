@@ -27,10 +27,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/EmployeeServlet">Employee</a>
 		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/PackageServlet">Package</a>
 		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/RoleServlet">Role</a>
-		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/StatamentServlet">Statament</a>
+		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/StatamentServlet">Statement</a>
 		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/TransferServlet">Transfer</a>
 		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/UserServlet">User</a>
-		<a class="header-anchor-menu" href="<%=request.getContextPath()%>/HomeServlet">Home</a>
 		
 	</div>
 

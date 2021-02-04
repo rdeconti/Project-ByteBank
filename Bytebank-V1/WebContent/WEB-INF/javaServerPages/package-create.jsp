@@ -39,93 +39,134 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
        	<br />
        	<br />
 	
-		<div class="container col-md-5">
-		
-			<div class="card">
-			
-				<div class="card-body">
+		<div class="crud-container">
 				
-					<h2>Create ByteBank Package</h2>
+			<h2 class="crud-header" >Create ByteBank Package</h2>
+			
+			<form class="crud-form" method="post" action="PackageServlet">
+			
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Code</label> 					
+					</div>
 					
-					<form method="post" action="PackageServlet">
-					
-						<fieldset class="form-group">
-							<label>Package Code</label> 
-							<input 
-								type="number"
-								value="<c:out value='${packageCode}' />" 
-								class="form-control"
-								name="code" 
-								required="required">
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Status</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageStatus}' />" 
-								class="form-control"
-								name="status" 
-								required="required"	>
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Level</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageLevel}' />" 
-								class="form-control"
-								name="level" 
-								required="required">
-						</fieldset>
-		
-						<fieldset class="form-group">
-							<label>Package Name</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageName}' />" 
-								class="form-control"
-								name="name" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Description</label> 
-							<input 
-								type="text"
-								value="<c:out value='${packageDescription}' />" 
-								class="form-control"
-								name="description" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Limit</label> 
-							<input 
-								type="number"
-								value="<c:out value='${packageLimit}' />" 
-								class="form-control"
-								name="limit" 
-								required="required">
-						</fieldset>
-						
-						<fieldset class="form-group">
-							<label>Package Fee</label> 
-							<input 
-								type="number"
-								value="<c:out value='${packageFee}' />" 
-								class="form-control"
-								name="fee" 
-								required="required">
-						</fieldset>
-					
-						<input type="submit" value="CreatePackage" name="submitAction">
-						
-					</form>
-	
+					<div class="crud-input-75">
+						<input 
+						type="number"
+						value="<c:out value='${packageCode}' />" 
+						class="crud-input-text"
+						name="code" 
+						required="required">
+					</div>
+				
 				</div>
 				
-			</div>
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Status</label> 					
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+						type="text"
+						value="<c:out value='${packageStatus}' />" 
+						class="crud-input-text"
+						name="status" 
+						required="required"	>
+					</div>
+				
+				</div>
+				
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Level</label> 
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+						type="text"
+						value="<c:out value='${packageLevel}' />" 
+						class="crud-input-text"
+						name="level" 
+						required="required">				
+					</div>
+				
+				</div>
+				
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Name</label> 
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+						type="text"
+						value="<c:out value='${packageName}' />" 
+						class="crud-input-text"
+						name="name" 
+						required="required">					
+					</div>
+				
+				</div>
+				
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Description</label> 
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+							type="text"
+							value="<c:out value='${packageDescription}' />" 
+							class="crud-input-text"
+							name="description" 
+							required="required">					
+					</div>
+				
+				</div>
+				
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Limit</label> 					
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+							type="number"
+							value="<c:out value='${packageLimit}' />" 
+							class="crud-input-text"
+							name="limit" 
+							required="required">					
+					</div>
+				
+				</div>
+				
+				<div class="crud-input-row">
+				
+					<div class="crud-input-25">
+						<label class="crud-input-label">Package Fee</label> 					
+					</div>
+					
+					<div class="crud-input-75">
+						<input 
+							type="number"
+							value="<c:out value='${packageFee}' />" 
+							class="crud-input-text"
+							name="fee" 
+							required="required">					
+					</div>
+				
+				</div>
+				
+				<input class="crud-button-submit" type="submit" value="CreatePackage" name="submitAction">
+				
+			</form>
 			
 		</div>
 	

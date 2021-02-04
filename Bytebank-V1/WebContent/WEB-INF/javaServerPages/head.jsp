@@ -24,6 +24,7 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <link rel="stylesheet" href="resources/css/reset.css">
 
 <!-- Custom style sheets ---------------------------------------------------------->
+<link rel="stylesheet" href="resources/css/crud.css">
 <link rel="stylesheet" href="resources/css/footer.css">
 <link rel="stylesheet" href="resources/css/header.css">
 <link rel="stylesheet" href="resources/css/icons.css">

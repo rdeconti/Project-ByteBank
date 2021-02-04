@@ -4,8 +4,32 @@ Programmer: Rosemeire Deconti
 Date: January / 2021
 Challenge: Create Web Page ByteBank and apply JAVA knowledge
 *******************************************************************************/
+/** https://fontawesome.com/v4.7.0/examples/ **/
+/** https://www.treinaweb.com.br/blog/css-dominando-o-font-awesome/ **/
+
 .custom-icon {
-  color: blue;
-  font-size:20px;
-  padding-right: 10px;
+	color: blue;
+	font-size:20px;
+	padding-right: 10px;
+}
+
+.custom-icon-list {
+	background-color: transparent;
+	color: black;
+	font-size:20px;
+	padding-right: 10px;
+}
+
+.custom-icon-list:hover  {
+	background-color: transparent;
+	color: red;
+}
+
+.custom-icon-button {
+	background-color: transparent;
+	border: none;
+	padding: 0 px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
 }

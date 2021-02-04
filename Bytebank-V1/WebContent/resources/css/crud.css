@@ -4,7 +4,7 @@ Programmer: Rosemeire Deconti
 Date: January / 2021
 Challenge: Create Web Page ByteBank and apply JAVA knowledge
 *******************************************************************************/
-.main-container {
+.crud-container {
 	background-image: url("../../resources/img/background-package.jpeg");
 	background-color: #6B95E0;
 	background-position: center;
@@ -12,9 +12,10 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	background-size: cover;
 	padding: 10px;
 	height: 200%;
+	border-radius: 5px;
 }
 
-.main-header {
+.crud-header {
 	color: white;	
 	text-align: center;	
 	font-size: 30px;
@@ -23,7 +24,54 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	padding: 10px;	
 }
 
-.main-anchor-menu {
+.crud-form {
+	margin: auto;
+	width: 70%;
+	text-align:center;
+	border: 1px solid white;
+}
+
+.crud-group {
+	margin: auto;
+	width: auto;
+	text-align: left;
+}
+
+.crud-input-row {
+	font-size: 25px;
+	width: 100%;
+	font-weight: bold;
+	color: white;
+	padding: 10px;
+	margin: 5px;	
+}
+
+.crud-input-25 {
+	float: left;
+	width: 25%;
+	margin-top: 6px;
+}
+
+.crud-input-75 {
+	float: left;
+	width: 75%;
+	margin-top: 6px;
+}
+
+.crud-input-text {
+	font-size: 25px;
+	width: 50%;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	margin: 5px;
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.crud-button-submit {
 	border: 3px solid white;
 	border-radius: 10px;
 	vertical-align: middle;
@@ -35,46 +83,11 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 	color: white;
 	text-align: center;
 	font-weight: bold;
+	cursor: pointer;	
 }
 
-.main-anchor-menu:hover  {
-	opacity: 0.5;
-}
-
-.main-table {
-	margin: auto;
-	font-family: Arial, Helvetica, sans-serif;
-	border-collapse: collapse;
-	width: auto;
-	background-color: #ddd;
-	text-align: left;
-}
-
-.main-table td, .main-table th {
-	border: 1px solid #ddd;
-	padding: 8px;
-}
-
-.main-table tr:nth-child(even){
-	background-color: #f2f2f2;
-}
-
-.main-table tr:hover {
-	background-color: #cdefdf;
-}
-
-.main-table th {
-	padding-top: 12px;
-	padding-bottom: 12px;
-	text-align: left;
-	background-color: blue;
-	color: white;
-}
-
-.main-table-header {
-	font-weight: bold;
-	text-align: center;
-	vertical-align:middle;
+.crud-button-submit:hover {
+	background-color: red;
 }
 
 /** ------------------------------------------------------------ Media Query **/

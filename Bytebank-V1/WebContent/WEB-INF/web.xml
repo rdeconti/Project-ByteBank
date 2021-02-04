@@ -31,9 +31,30 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/javaServerPages/error-java.jsp</location>
 	</error-page>
+	
+	<!-- MODULE: USER -->
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>br.com.bytebank.Servlet.UserServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/userServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- MODULE: HOME -->
+	<servlet>
+		<servlet-name>HomeServlet</servlet-name>
+		<servlet-class>br.com.bytebank.Servlet.HomeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>HomeServlet</servlet-name>
+		<url-pattern>/homeServlet</url-pattern>
+	</servlet-mapping>
 
-	<!-- 
-
+	<!-- MODULE: "PACKAGE" -->
 	<servlet>
 		<servlet-name>PackageServlet</servlet-name>
 		<servlet-class>br.com.bytebank.Servlet.PackageServlet</servlet-class>
@@ -44,27 +65,10 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 		<url-pattern>/packageServlet</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>UserServlet</servlet-name>
-		<servlet-class>br.com.bytebank.Servlet.PackageServlet</servlet-class>
-	</servlet>
+
 	
-	<servlet-mapping>
-		<servlet-name>UserServlet</servlet-name>
-		<url-pattern>/userServlet</url-pattern>
-	</servlet-mapping>
+
 	
-		<servlet>
-		<servlet-name>HomeServlet</servlet-name>
-		<servlet-class>br.com.bytebank.Servlet.HomeServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>HomeServlet</servlet-name>
-		<url-pattern>/homeServlet</url-pattern>
-	</servlet-mapping>
-	
-	-->
-	
-	
+
+
 </web-app>

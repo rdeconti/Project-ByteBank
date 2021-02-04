@@ -17,10 +17,9 @@ Challenge: Create Web Page ByteBank and apply JAVA knowledge
 <footer>
 
 	<div class="footer-container">
-	
-		<a class="footer-anchor" href="<%=request.getContextPath()%>/home"><img class="footer-logo" src="resources/img/bytebank-logo.png" alt="ByteBank Logo"></a>  
-
-		<a class="footer-anchor-menu" href="#home">Home</a>
+	  
+		<a class="header-anchor" href="<%=request.getContextPath()%>/HomeServlet"><img class="header-logo" src="resources/img/bytebank-logo.png" alt="ByteBank Logo"></a>
+		
 		<a class="footer-anchor-menu" href="#contact">Contact</a>
 		<a class="footer-anchor-menu" href="#about">About</a>
 		
